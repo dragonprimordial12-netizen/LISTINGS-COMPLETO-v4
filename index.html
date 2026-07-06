@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dragon Primordial — Listings v4</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#111;color:#ddd;font-size:13px;padding:10px}
+h1{font-size:14px;color:#fa0;margin-bottom:2px}
+.sub{font-size:10px;color:#444;margin-bottom:10px}
+.plat-bar{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #1e1e1e}
+.lang-bar{display:flex;gap:4px;margin-bottom:8px}
+.lb{padding:5px 12px;border-radius:5px;border:1px solid #2a2a2a;font-size:11px;font-weight:700;cursor:pointer;background:#151515;color:#555}
+.lb.active{border-color:#fa0;color:#fa0;background:#1e1400}
+.pb{padding:5px 12px;border-radius:5px;border:1px solid #2a2a2a;font-size:11px;font-weight:700;cursor:pointer;background:#151515;color:#555}
+.pb.bbb{border-color:#7cf;color:#7cf;background:#061218}
+.pb.itch{border-color:#f77;color:#f77;background:#180808}
+.pb.yt{border-color:#f44;color:#f44;background:#180404}
+.pb.tt{border-color:#69c9d0;color:#69c9d0;background:#020e10}
+.sl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:3px 8px;border-radius:3px;margin:10px 0 5px;display:inline-block}
+.sl-pure{background:#061a2e;color:#7cf}.sl-corrupt{background:#1e0606;color:#f77}
+.sl-boss{background:#1e0e00;color:#fa0}.sl-npc{background:#061e06;color:#7f7}
+.sl-beast{background:#1e1000;color:#fc9}.sl-script{background:#10061e;color:#c9f}
+.sl-sentinel{background:#061a2e;color:#9cf}.sl-ch{background:#1a0808;color:#f99}
+.ibar{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:7px}
+.ib{padding:2px 7px;border-radius:4px;border:1px solid #1e1e1e;font-size:10px;cursor:pointer;background:#141414;color:#666;white-space:nowrap}
+.ib.active{background:#222;color:#ccc;border-color:#3a3a3a}
+.plat-panel{display:none}.plat-panel.active{display:block}
+.npc-panel{display:none}.npc-panel.active{display:block}
+.fld{background:#161616;border-radius:5px;padding:9px;margin-bottom:6px;border:1px solid #1c1c1c}
+.flb{font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center}
+.flb span{color:#666}
+.fld pre{margin:0;font-size:12px;white-space:pre-wrap;color:#bbb;line-height:1.55}
+.cpb{font-size:10px;padding:2px 7px;cursor:pointer;border-radius:3px;background:#1e1e1e;color:#666;border:1px solid #2a2a2a}
+.cpb:hover{background:#2a2a2a;color:#ccc}
+.ok{color:#7f7;font-size:10px;margin-left:3px;opacity:0;transition:opacity .3s}.ok.show{opacity:1}
+.inf{background:#141414;border-radius:5px;padding:8px;font-size:11px;color:#555;line-height:1.9;border:1px solid #1c1c1c;margin-bottom:6px}
+.inf b{color:#888}
+</style>
+</head>
+<body>
+<h1>🐲 DRAGON PRIMORDIAL — LISTINGS COMPLETO v4</h1>
+<div class="sub">BuiltByBit · itch.io · YouTube · TikTok — Todos los productos — Beast Tools con descripciones reales en inglés para BBB</div>
+<div class="lang-bar" id="langbar">
+  <button class="lb active" id="lb-es" onclick="setLang('es')">🇪🇸 Español</button>
+  <button class="lb" id="lb-en" onclick="setLang('en')">🇬🇧 English</button>
+</div>
+<div class="plat-bar" id="pbar"></div>
+<div id="pp"></div>
+
+<script>
+// ─── LINKS ──────────────────────────────────────────────────
+const D={
+  bbb:'https://builtbybit.com/creators/dragon-primordial.828779/',
+  itch:'https://dragonprimordial.itch.io/',
+  disc:'https://discord.gg/3tavqTxKrX',
+  yt:'https://www.youtube.com/channel/UC3Ko8g884iyZim4ODR-Wpbg',
+  tw:'https://x.com/dragonprimordia',
+  tt:'https://www.tiktok.com/@dragonprimordial',
+  kofi:'https://ko-fi.com/dragonprimordial',
+  atom:'https://www.atom.bio/dragonprimordial12',
+};
+const LINKS=`🛒 BuiltByBit: ${D.bbb}\n🎮 itch.io: ${D.itch}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}`;
+const LINKS_YT=(slug)=>`🛒 Comprar (BuiltByBit): ${D.bbb}\n🎮 itch.io: ${D.itch}${slug}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}\n\nEscríbeme si tienes alguna pregunta.`;
+const HFOOT=`────────────────────────────────\n🐲 Dragon Primordial — Beasts & Monsters\n${LINKS}`;
+const FOOTER_EN=`Part of BEASTS & MONSTERS — 20+ unique NPCs.\nDiscord: ${D.disc}\nYouTube: ${D.yt}\nX (Twitter): ${D.tw}\nTikTok: ${D.tt}`;
+const STDBUILD_ES='Cada parte de este modelo fue construida y organizada en carpetas claramente etiquetadas, haciéndolo totalmente compatible con herramientas de rigging automatizado. El modelo está sin ofuscar y es completamente editable, por lo que puedes retexturizar, redimensionar o reconstruir cualquier parte sin restricciones.';
+const STDFOR_ES='• Juegos RPG y de supervivencia\n• Coleccionadores de bestias / monstruos\n• Sistemas de encuentros de jefe\n• Spawns de criaturas en mundo abierto';
+const TAGS_NPC='roblox, npc, model, beast, monster, rbxm, enemy, creature, scripted, robloxstudio';
+const TAGS_BEAST='roblox, roblox-studio, combat, tool, beast, vfx, scripted, game-asset, luau, npc';
+const TAGS_SCRIPT='roblox, script, motor6d, rig, animation, npc, luau, monster, beast, tool';
+const TAGS_SENT='roblox, script, turret, combat, npc, luau, ai, projectile, defense, motor6d';
+
+// ─── NPC DESC ES ─────────────────────────────────────────────
+function npcDescES(em,nombre,tipo,intro,detalle,archivo,feat){
+return `${em} ${nombre} — ${tipo}
+
+${intro}
+
+${detalle}
+
+Este modelo forma parte de la colección BEASTS & MONSTERS — un conjunto de NPCs únicos y artesanales construidos específicamente para juegos de Roblox. Cada criatura de esta colección está diseñada con su propia silueta, paleta de colores e identidad visual para destacar en tu mundo de juego.
+
+「 ✦ QUÉ INCLUYE ✦ 」
+• Archivo de modelo ${archivo} .rbxm
+• Listo para insertar en Roblox Studio
+• Partes de malla optimizadas organizadas en carpetas por extremidad
+
+「 ✦ CARACTERÍSTICAS ✦ 」
+• ${feat}
+• Estilo artístico Roblox low-poly, optimizado para rendimiento
+• Construcción completamente basada en MeshPart con organización limpia
+• Compatible con la mayoría de frameworks de juegos Roblox
+• Funciona perfectamente con el script Monster Parts Connector Motor6D
+• Código abierto — modifica el modelo libremente para tu proyecto
+
+「 ✦ CONSTRUCCIÓN Y CALIDAD ✦ 」
+${STDBUILD_ES}
+
+「 ✦ PERFECTO PARA ✦ 」
+${STDFOR_ES}
+
+「 ✦ MÁS DE ESTA COLECCIÓN ✦ 」
+${HFOOT}`;
+}
+
+// ─── NPC DESC EN ─────────────────────────────────────────────
+function npcDescEN(em,name,type,intro,detail,archivo,feat){
+return `${em} ${name} — ${type}
+
+${intro}
+
+${detail}
+
+This model is part of the BEASTS & MONSTERS collection — a hand-crafted set of unique NPCs built specifically for Roblox games. Every creature in this collection is designed with its own distinct silhouette, color palette, and visual identity so it stands out in your game world.
+
+「 ✦ WHAT'S INCLUDED ✦ 」
+• ${archivo} .rbxm model file
+• Ready to insert via Roblox Studio
+• Optimized mesh parts organized by limb folders
+
+「 ✦ FEATURES ✦ 」
+• ${feat}
+• Low-poly stylized Roblox art style, optimized for performance
+• Fully MeshPart-based construction with clean part organization
+• Compatible with most Roblox game frameworks
+• Works seamlessly with the Monster Parts Connector Motor6D script
+• Open source — modify the model freely for your own project
+
+「 ✦ CONSTRUCTION & QUALITY ✦ 」
+Each part of this model was built and organized into clearly labeled folders, making it fully compatible with automated rigging tools. The model is unobfuscated and fully editable, so you can retexture, resize, or rebuild any part without restrictions.
+
+「 ✦ PERFECT FOR ✦ 」
+• RPG and survival games
+• Beast / monster collectors
+• Boss encounter systems
+• Open world creature spawns
+
+「 ✦ MORE FROM THIS COLLECTION ✦ 」
+${FOOTER_EN}`;
+}
+
+// ─── ALL NPC DATA ────────────────────────────────────────────
+// [id, em, nombre_bbb_en, summary_en, slug_itch, nombre_es, tipo_es, intro_es, detalle_es, archivo, feat_es, em_tt, tag_tt]
+const PURE=[
+['lion','💠🦁','Mythical Lion Beast Roblox NPC','Mythical lion beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-lion-beast','Bestia León Mítico','NPC de Bestia Pura',
+ 'Una feroz bestia de león mítico lista para insertar en tu juego Roblox como enemigo, jefe o compañero de batalla.',
+ 'Esta bestia encarna el poder bruto y el orgullo, construida con una silueta audaz y detalles angulares afilados que se leen claramente incluso desde lejos. Su presencia imponente la convierte en una pieza central excelente para cualquier lista de RPG.',
+ 'León_Mítico','Diseño estético mítico de depredador feroz con postura dominante','🦁','leon mitico bestia pura','A fierce mythical lion beast ready to be dropped into your Roblox game as an enemy, boss, or battle companion.','This beast embodies raw power and pride, built with a bold silhouette and sharp angular detailing that reads clearly even from a distance. Its commanding presence makes it an excellent centerpiece for any RPG roster.','Fierce predator mythical aesthetic with a commanding stance'],
+['dragon','💠🐲','Mythical Dragon Beast Roblox NPC','Mythical dragon beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-dragon-beast','Bestia Dragón Mítico','NPC de Bestia Pura',
+ 'Una formidable bestia de dragón mítico rojo con ojos brillantes y alas, lista para dominar tu juego Roblox.',
+ 'Diseñado como criatura insignia para encuentros de jefe, este dragón tiene carpetas de alas articuladas, una cabeza con cuernos y una sección de cola larga — todo separado para que los animadores puedan posar y riggear cada sección de forma independiente.',
+ 'Dragón_Mítico','Ojos rojos brillantes y diseño detallado de membrana de ala','🐲','dragon mitico bestia pura','A fearsome red mythical dragon beast with glowing eyes and wings, ready to dominate your Roblox game.','Designed as a flagship creature for boss encounters, this dragon features articulated wing folders, a horned head, and a long tail section — all separated so animators can pose and rig each section independently.','Glowing red eyes and detailed wing membrane design'],
+['human','💠👤','Mythical Human Beast Roblox NPC','Mythical human beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-human-beast','Bestia Humana Mítica','NPC de Bestia Pura',
+ 'Una oscura bestia humanoide con detalles brillantes, lista para insertar en tu juego Roblox como enemigo, jefe o criatura jugable.',
+ 'A diferencia de las otras bestias, este modelo sigue una estructura humanoide bípeda, lo que lo hace ideal para tipos de enemigos centrados en melee o como base para variantes de personajes personalizados en tu juego.',
+ 'Bestia_Humano','Diseño humanoide oscuro con luces de acento amarillo brillantes','👤','humano bestia pura roblox','A dark humanoid beast with glowing details, ready to be dropped into your Roblox game as an enemy, boss, or playable creature.','Unlike the other beasts, this model follows a bipedal humanoid structure, making it ideal for melee-focused enemy types or as a base for custom character variants in your game.','Dark humanoid design with glowing yellow accent lights'],
+['snake','💠🐍','Mythical Snake Beast Roblox NPC','Mythical snake beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-snake-beast','Bestia Serpiente Mítica','NPC de Bestia Pura',
+ 'Una venenosa bestia de serpiente mítica con escamas brillantes y una presencia mortal.',
+ 'Construida con un cuerpo segmentado alargado, esta bestia serpiente es perfecta para animaciones de movimiento de deslizamiento y encuentros de enemigos tipo emboscada en mazmorras o biomas de jungla.',
+ 'Serpiente_Mítica','Estética de serpiente venenosa con detalles de escamas brillantes','🐍','serpiente mitica bestia pura','A venomous mythical snake beast with glowing scales and a deadly presence.','Built with an elongated segmented body, this serpent beast is well suited for slithering movement animations and ambush-style enemy encounters in dungeons or jungle biomes.','Venomous serpent aesthetic with glowing scale detailing'],
+['mturt','💠🐢','Mythical Turtle Beast Roblox NPC','Mythical turtle beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-turtle-beast','Bestia Tortuga Mítica','NPC de Bestia Pura',
+ 'Una masiva bestia de tortuga mítica blindada con un caparazón impenetrable.',
+ 'Esta criatura arquetipo tanque fue diseñada con un caparazón grueso reforzado y extremidades robustas, perfecta para mecánicas de jefe lento y defensivo o encuentros tipo guardián que bloquean el progreso del jugador.',
+ 'Tortuga_Mítica','Caparazón blindado pesado con placas tipo tanque reforzadas','🐢','tortuga mitica bestia pura','A massive armored mythical turtle beast with an impenetrable shell.','This tank-archetype creature was designed with a thick reinforced shell and stout limbs, making it perfect for slow, defensive boss mechanics or guardian-type encounters that block player progress.','Heavy armored shell with reinforced tank-like plating'],
+['phoenix','💠🐦','Mythical Phoenix Beast Roblox NPC','Mythical phoenix beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-phoenix-beast','Bestia Fénix Mítico','NPC de Bestia Pura',
+ 'Una ardiente bestia de fénix mítico con alas de fuego y un aura legendaria de renacimiento.',
+ 'Elaborado con geometría de alas amplias y acentos de llama cálidos y brillantes, este fénix fue construido para sentirse legendario — ideal como criatura de recompensa rara o jefe final climático.',
+ 'Fénix_Mítico','Alas de fuego con detalles de iluminación temática de llama brillante','🐦','fenix mitico bestia pura','A blazing mythical phoenix beast with fiery wings and a legendary rebirth aura.','Crafted with sweeping wing geometry and warm glowing flame accents, this phoenix is built to feel legendary — ideal as a rare reward creature or a climactic final boss.','Fiery wings with glowing flame-themed lighting details'],
+['fox','💠🦊','Mythical Fox Beast Roblox NPC','Mythical fox beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-fox-beast','Bestia Zorro Mítico','NPC de Bestia Pura',
+ 'Una astuta bestia de zorro mítico con acentos brillantes y diseño de movimiento rápido.',
+ 'Construido con un marco elegante y ágil, esta bestia zorro es ideal para encuentros de persecución de ritmo rápido o como criatura compañera ágil con patrones de movimiento rápidos y ligeros.',
+ 'Zorro_Mítico','Estética de zorro astuto con diseño de acento brillante elegante','🦊','zorro mitico bestia pura','A cunning mythical fox beast with glowing accents and swift movement design.','Built with a sleek, agile frame, this fox beast is ideal for fast-paced chase encounters or as a nimble companion creature with quick, lightweight movement patterns.','Cunning fox aesthetic with sleek glowing accent design'],
+['lizard','💠🦖','Mythical Tyrant Lizard King Roblox NPC','Mythical tyrant lizard king NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-tyrant-lizard','Rey Lagarto Tirano Mítico','NPC de Bestia Pura',
+ 'Una colosal bestia de rey lagarto tirano mítico — el depredador ápex de todas las bestias.',
+ 'Este es el modelo más grande e imponente de la línea Pure Beasts, construido con proporciones sobredimensionadas y musculatura pesada para servir como jefe de nivel ápex para encuentros de final de juego.',
+ 'Rey_Lagarto_Tirano','Depredador ápex colosal con proporciones masivas tipo dinosaurio','🦖','rey lagarto tirano mitico','A colossal mythical tyrant lizard king beast — the apex predator of all beasts.','This is the largest and most imposing model in the Pure Beasts line, built with oversized proportions and heavy musculature to serve as an apex-tier boss for end-game encounters.','Colossal apex predator with massive dinosaur-like proportions'],
+['mscorp','💠🦂','Mythical Scorpion Beast Roblox NPC','Mythical scorpion beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-scorpion-beast','Bestia Escorpión Mítico','NPC de Bestia Pura',
+ 'Una mortal bestia de escorpión mítico con aguijón venenoso y cuerpo blindado.',
+ 'Con un exoesqueleto segmentado y una sección de cola con aguijón elevado, esta criatura es perfecta para niveles temáticos de desierto y mecánicas de ataque basadas en veneno.',
+ 'Escorpión_Mítico','Aguijón venenoso mortal con exoesqueleto completamente blindado','🦂','escorpion mitico bestia pura','A deadly mythical scorpion beast with a venomous stinger and armored body.','Featuring a segmented exoskeleton and a raised tail stinger section, this creature is well suited for desert-themed levels and venom-based attack mechanics.','Deadly venomous stinger with fully armored exoskeleton'],
+];
+
+const CORRUPT=[
+['crhino','💠🦏','Corrupted Rhino Beast Roblox NPC','Corrupted rhino beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'corrupted-rhino-beast','Bestia Rinoceronte Corrupto','NPC de Bestia Corrupta',
+ 'Un poderoso rinoceronte corrupto con armadura oscura, listo para insertar en tu juego Roblox como enemigo, jefe o compañero criatura.',
+ 'Retorcido por la corrupción, este rinoceronte lleva pesadas placas de armadura estilo mecánico con conductos de energía brillante recorriendo sus patas, dándole una presencia tipo tanque, casi cibernética.',
+ 'Rinoceronte_Corrupto','Estética corrupta oscura con detalles de energía brillante en patas','🦏','rinoceronte corrupto bestia','A powerful, dark-armored corrupted rhinoceros beast ready to be dropped into your Roblox game as an enemy, boss, or creature companion.','Twisted by corruption, this rhino carries heavy mechanical-style armor plating with glowing energy conduits running down its legs, giving it a tank-like, almost cybernetic presence.','Dark corrupted aesthetic with glowing leg energy details'],
+['cspider','💠🕷️','Corrupted Spider Beast Roblox NPC','Corrupted spider beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'corrupted-spider-beast','Bestia Araña Corrupta','NPC de Bestia Corrupta',
+ 'Una aterradora bestia de araña corrupta con energía oscura y múltiples patas mortales.',
+ 'Construida con ocho patas articuladas individualmente, esta araña corrupta está diseñada para animaciones de arrastre inquietantes y funciona excepcionalmente bien en encuentros de mazmorra temáticos de terror.',
+ 'Araña_Corrupta','Estética de araña oscura corrupta con articulación multipata','🕷️','araña corrupta bestia','A terrifying corrupted spider beast with dark energy and multiple deadly legs.','Built with eight individually articulated legs, this corrupted spider is designed for unsettling crawling animations and works exceptionally well in horror-themed dungeon encounters.','Corrupted dark spider aesthetic with multi-legged articulation'],
+['cwhale','💠🐳','Corrupted Whale Beast Roblox NPC','Corrupted whale beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'corrupted-whale-beast','Bestia Ballena Corrupta','NPC de Bestia Corrupta',
+ 'Una masiva bestia de ballena corrupta con poder oscuro acechando desde las profundidades.',
+ 'Esta bestia acuática sobredimensionada fue construida para sentirse genuinamente masiva en el juego, con marcas corruptas oscuras extendiéndose por su cuerpo — perfecta como jefe marino o amenaza ambiental del mundo.',
+ 'Ballena_Corrupta','Bestia oceánica corrupta con diseño de cuerpo marcado oscuro gigante','🐳','ballena corrupta bestia','A massive corrupted whale beast with dark power lurking from the deep.','This oversized aquatic beast was built to feel genuinely massive in-game, with dark corrupted markings spreading across its body — perfect as a sea-roaming boss or ambient world threat.','Corrupted ocean beast with giant dark-marked body design'],
+['cunicorn','💠🦄','Corrupted Unicorn Beast Roblox NPC','Corrupted unicorn beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'corrupted-unicorn-beast','Bestia Unicornio Corrupto','NPC de Bestia Corrupta',
+ 'Una bestia de unicornio corrupto con energía oscura reemplazando su gracia antes pura.',
+ 'Tomando una criatura clásicamente elegante y retorciéndola con geometría corrupta afilada y acentos brillantes oscuros, esta bestia ofrece un contraste llamativo que encaja bien en narrativas de fantasía oscura.',
+ 'Unicornio_Corrupto','Unicornio oscuro corrupto con silueta elegante pero siniestra','🦄','unicornio corrupto bestia','A corrupted unicorn beast with dark energy replacing its once pure grace.','Taking a classically elegant creature and twisting it with sharp corrupted geometry and dark glowing accents, this beast offers a striking contrast that fits dark fantasy storylines well.','Corrupted dark unicorn with elegant yet sinister silhouette'],
+['cchimera','💠🧪','Corrupted Chimera Beast Roblox NPC','Corrupted chimera beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'corrupted-chimera-beast','Bestia Quimera Corrupta','NPC de Bestia Corrupta',
+ 'Una grotesca bestia de quimera corrupta — una aterradora fusión de múltiples criaturas.',
+ 'Combinando formas de extremidades y cabezas no coincidentes de diferentes animales, esta quimera fue diseñada específicamente para sentirse antinatural y amenazante, convirtiéndola en una excelente opción de jefe de nivel medio.',
+ 'Quimera_Corrupta','Híbrido corrupto de múltiples criaturas con silueta grotesca única','🧪','quimera corrupta bestia','A grotesque corrupted chimera beast — a terrifying fusion of multiple creatures.','Combining mismatched limb and head shapes from different animals, this chimera was specifically designed to feel unnatural and threatening, making it a standout mid-tier boss option.','Multi-creature corrupted hybrid with unique grotesque silhouette'],
+['cwolf','💠🐺','Corrupted Wolf Beast Roblox NPC','Corrupted wolf beast NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'corrupted-wolf-beast','Bestia Lobo Corrupto','NPC de Bestia Corrupta',
+ 'Una feroz bestia de lobo corrupto con energía oscura e instintos depredadores.',
+ 'Construido de forma esbelta y agresiva, este lobo corrupto funciona particularmente bien en encuentros de enemigos en manada, donde se pueden hacer spawn de múltiples copias juntas para una amenaza coordinada.',
+ 'Lobo_Corrupto','Lobo oscuro corrupto con constitución depredadora esbelta y feroz','🐺','lobo corrupto bestia','A ferocious corrupted wolf beast with dark energy and predatory instincts.','Built lean and aggressive, this corrupted wolf works particularly well in pack-based enemy encounters, where multiple copies can be spawned together for a coordinated threat.','Corrupted dark wolf with lean, ferocious predatory build'],
+];
+
+const BOSSES=[
+['bcrab','♦️🐚','Hermit Crab Boss Roblox NPC','Mythical hermit crab boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'hermit-crab-boss','Jefe Cangrejo Ermitaño Mítico','NPC Jefe',
+ 'Un masivo jefe de cangrejo ermitaño mítico con caparazón blindado y garras aplastantes.',
+ 'Con un caparazón de gran tamaño y pinzas diseñadas para animaciones de golpe pesado, este jefe cangrejo es perfecto para encuentros de arena de playa u océano que requieren una sensación de presencia formidable.',
+ 'Cangrejo_Ermitaño','Caparazón blindado masivo con diseño de garras aplastantes poderosas','🐚','jefe cangrejo ermitaño mitico','A massive mythical hermit crab boss with a powerful armored shell and crushing claws.','Built around a heavy central shell piece with two oversized claw appendages, this boss is ideal for telegraphed slam and pinch attack patterns in beach or ocean-themed boss arenas.','Armored shell boss with oversized crushing claw design'],
+['bshark','♦️🦈','Water Shark Boss Roblox NPC','Mythical water shark boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'water-shark-boss','Jefe Tiburón de Agua Mítico','NPC Jefe',
+ 'Un veloz jefe de tiburón de agua mítico con cuerpo hidrodinámico para encuentros submarinos.',
+ 'Construido con un perfil aerodinámico y aletas bien definidas, este tiburón mítico está diseñado para mecánicas de ataque rápido y funciona perfectamente como jefe de arena oceánica o de lago.',
+ 'Tiburón_de_Agua','Depredador marino veloz con cuerpo hidrodinámico y aletas definidas','🦈','jefe tiburon de agua mitico','A fearsome mythical water shark boss that dominates the seas with speed and power.','Streamlined for fast swimming animations, this shark boss features a hydrodynamic body shape and prominent fin sections, making it suited for chase-style underwater boss fights.','Apex ocean predator with hydrodynamic body and sharp fin design'],
+['bhydra','♦️🐍','Mythical Hydra Boss Roblox NPC','Mythical hydra boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-hydra-boss','Jefe Hidra Mítica','NPC Jefe',
+ 'Un imponente jefe de hidra mítica multicabeza con secciones posicionables independientes.',
+ 'Diseñado con múltiples cabezas separadas y un cuerpo robusto, esta hidra es perfecta para mecánicas de jefe multifase donde cada cabeza puede representar una fase diferente del combate.',
+ 'Hidra','Jefe multicabeza con secciones posicionables y cuerpo robusto independiente','🐍','jefe hidra mitica roblox','A legendary multi-headed hydra boss with regenerating power and devastating attacks.','Built with multiple independently posable head sections branching from a shared body, this hydra is perfect for multi-phase boss fights where heads can be defeated individually.','Multi-headed legendary boss with branching imposing structure'],
+['bbasilisk','♦️🐔','Mythical Basilisk Boss Roblox NPC','Mythical basilisk boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-basilisk-boss','Jefe Basilisco Mítico','NPC Jefe',
+ 'Un temible jefe de basilisco mítico con mirada petrificante y ataques venenosos.',
+ 'Híbrido único entre serpiente y gallo con detalles amenazantes, perfecto para mecánicas de ataque mixtas que combinan daño a distancia basado en veneno con ataques cuerpo a cuerpo.',
+ 'Basilisco','Híbrido serpiente-gallo con mirada petrificante y detalles venenosos','🐔','jefe basilisco mitico roblox','A mythical basilisk boss with petrifying gaze and deadly venom.','This hybrid serpent-rooster boss combines a crested head with a long coiling body, designed to support both ranged gaze-based attacks and close-range venom strikes.','Petrifying gaze design with serpentine rooster hybrid body'],
+['bboar','♦️🐗','Mutant Boar Boss Roblox NPC','Mutant boar boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mutant-boar-boss','Jefe Jabalí Mutante','NPC Jefe',
+ 'Un masivo jefe de jabalí mutante con fuerza mejorada y colmillos afilados como cuchillas.',
+ 'Construido con una postura baja y amplia y colmillos orientados hacia adelante, este jefe jabalí está perfectamente formado para mecánicas de ataque de carga que se telegrafían claramente a los jugadores.',
+ 'Jabalí_Mutante','Jabalí mutante mejorado con postura amplia y poderosa lista para cargar','🐗','jefe jabali mutante roblox','A massive mutant boar boss with enhanced strength and razor-sharp tusks.','Built with a low, broad stance and forward-facing tusks, this boar boss is perfectly shaped for charge-attack mechanics that telegraph clearly to players.','Mutant enhanced boar with broad powerful charge-ready stance'],
+['bplesi','♦️🦕','Mythical Plesiosaur Boss Roblox NPC','Mythical plesiosaur boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'mythical-plesiosaur-boss','Jefe Plesiosaurio Mítico','NPC Jefe',
+ 'Un colosal jefe de plesiosaurio mítico emergiendo de las profundidades antiguas con poder prehistórico.',
+ 'Con una sección de cuello extendida y aletas construidas para poses de natación, este gigante prehistórico es ideal para arenas de jefe en lagos u océanos que requieren una sensación de escala ancestral.',
+ 'Plesiosaurio','Gigante oceánico prehistórico con cuello extendido y diseño de aletas','🦕','jefe plesiosaurio mitico','A colossal mythical plesiosaur boss rising from ancient depths with prehistoric power.','Featuring an extended neck section and flippers built for swimming poses, this prehistoric giant is ideal for lake or ocean boss arenas requiring a sense of ancient scale.','Prehistoric ocean giant with extended neck and flipper design'],
+['bfrozen','♦️🧊','Frozen Monster Boss Roblox NPC','Frozen monster boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'frozen-monster-boss','Jefe Monstruo Gélido','NPC Jefe',
+ 'Un aterrador jefe de monstruo gélido encapsulado en hielo con habilidades de congelación.',
+ 'Construido con protuberancias de cristales de hielo irregulares por todo su cuerpo, este jefe se combina naturalmente con mecánicas de congelación, ralentización o denegación de área en niveles temáticos de invierno.',
+ 'Monstruo_Gélido','Jefe gélido encapsulado en hielo con detalles de cuerpo de cristal irregular','🧊','jefe monstruo gelido roblox','A terrifying frozen monster boss encased in ice with freezing abilities.','Built with jagged ice-crystal protrusions across its body, this boss pairs naturally with freeze, slow, or area-denial attack mechanics in winter-themed levels.','Ice-encased frozen boss with jagged crystal body detailing'],
+['bent','♦️🌳','Ancient Ent Boss Roblox NPC','Ancient ent boss NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'ancient-ent-boss','Jefe Ent Anciano','NPC Jefe',
+ 'Un anciano jefe de ent árbol viviente con siglos de poder arraigados en su forma masiva.',
+ 'Construido con extremidades de textura de corteza gruesa y una base enraizada amplia, este jefe ent es adecuado para ataques lentos de impacto pesado y funciona bien como encuentro guardián estacionario.',
+ 'Ent_Anciano','Árbol viviente antiguo con diseño de extremidades con textura de corteza gruesa','🌳','jefe ent anciano roblox','An ancient living tree ent boss with centuries of power rooted in its massive form.','Constructed with thick bark-textured limbs and a wide rooted base, this ent boss is suited for slow, heavy-impact attacks and works well as a stationary guardian-type encounter.','Ancient living tree with thick bark-textured limb design'],
+];
+
+const NPCS=[
+['caterpillar','♦️🐛','Hostile Caterpillar Roblox NPC','Hostile caterpillar NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'hostile-caterpillar','NPC Oruga Hostil','NPC Hostil',
+ 'Una rastrera oruga hostil con espinas venenosas y movimiento incesante.',
+ 'Construida con un cuerpo tubular segmentado, este NPC oruga soporta animaciones de arrastre suaves y funciona bien como amenaza de nivel bajo que aparece en grupos.',
+ 'Oruga','Hostil con espinas venenosas y cuerpo tubular segmentado','🐛','npc oruga hostil roblox','A creeping hostile caterpillar NPC with venomous spines and relentless movement.','Built with a segmented tube-like body, this caterpillar NPC supports smooth crawling animations and works well as a low-tier threat that appears in groups.','Venomous spine hostile with segmented tube-like body'],
+['flower','♦️🌸','Monster Flower Hostile Roblox NPC','Monster flower hostile NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'monster-flower-hostile','NPC Flor Monstruo Hostil','NPC Hostil',
+ 'Una engañosa flor monstruo hostil que atrae y ataca a jugadores desprevenidos.',
+ 'Diseñada para parecer inofensiva a primera vista, esta flor NPC se abre en una mandíbula dentada, haciéndola ideal para encuentros de trampa de emboscada escondidos entre follaje normal.',
+ 'Flor_Monstruo','Planta carnívora engañosa con floración vívida y mandíbula oculta','🌸','npc flor monstruo hostil','A deceptive hostile monster flower NPC that lures and attacks unsuspecting players.','Designed to look harmless at first glance, this flower NPC opens into a toothed maw, making it ideal for ambush-trap encounters hidden among regular foliage.','Deceptive carnivorous plant with vivid bloom and hidden maw'],
+['bat','♦️🦇','Ebony Bat Hostile Roblox NPC','Ebony bat hostile NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'ebony-bat-hostile','NPC Murciélago de Ébano Hostil','NPC Hostil',
+ 'Un rápido murciélago de ébano hostil con alas oscuras que ataca desde las sombras.',
+ 'Ligero y construido con amplias alas de membrana, este NPC murciélago es ideal para encuentros de enjambre volador en cuevas o entornos nocturnos.',
+ 'Murciélago_de_Ébano','Murciélago de ébano oscuro con diseño de ala de membrana amplia','🦇','npc murcielago ebano hostil','A swift hostile ebony bat NPC with dark wings that strikes from the shadows.','Lightweight and built with wide membrane wings, this bat NPC is ideal for flying swarm encounters in caves or night-time environments.','Dark ebony bat with wide membrane wing design'],
+['lycanthrope','♦️🐺','Lunar Lycanthrope Hostile Roblox NPC','Lunar lycanthrope hostile NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'lunar-lycanthrope','NPC Licántropo Lunar Hostil','NPC Hostil',
+ 'Un temible licántropo lunar que se transforma bajo la luz de la luna en un depredador mortal.',
+ 'Construido con un marco bípedo musculoso y extremidades con garras, este NPC licántropo es perfecto para encuentros de enemigos de élite que golpean más fuerte que los mobs estándar.',
+ 'Licántropo_Lunar','Transformación de hombre lobo lunar con diseño musculoso y con garras','🐺','npc licántropo lunar hostil','A fearsome lunar lycanthrope NPC that transforms under moonlight into a deadly predator.','Built with a muscular bipedal frame and clawed limbs, this lycanthrope NPC is well suited for elite enemy encounters that hit harder than standard mobs.','Lunar werewolf transformation with muscular clawed design'],
+['abyssal','♦️🐲','Abyssal Dragon Hostile Roblox NPC','Abyssal dragon hostile NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'abyssal-dragon-hostile','NPC Dragón Abisal Hostil','NPC Hostil',
+ 'Un aterrador dragón abisal emergiendo de las profundidades con poder oscuro y destructivo.',
+ 'Una contraparte más pequeña y oscura del Dragón Mítico, esta versión abisal fue construida para encuentros en fosas oceánicas con una forma corporal más compacta y agresiva.',
+ 'Dragón_Abisal','Dragón oscuro abisal con diseño compacto y agresivo de fosa oceánica','🐲','npc dragon abisal hostil','A terrifying abyssal dragon NPC rising from the depths with dark destructive power.','A smaller, darker counterpart to the Mythical Dragon, this abyssal version was built for ocean-trench encounters with a more compact, aggressive body shape.','Abyssal dark dragon with compact aggressive ocean-trench design'],
+['horse','♦️🐴','Hostile Horse Roblox NPC','Hostile horse NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'hostile-horse','NPC Caballo Hostil','NPC Hostil',
+ 'Un salvaje caballo hostil con poder sin domar cargando por campos abiertos.',
+ 'Construido con un marco equino naturalista, este NPC caballo soporta animaciones de galope y puede servir como enemigo de carga hostil o como base de montura domable.',
+ 'Caballo','Caballo salvaje sin domar con marco naturalista listo para galopar','🐴','npc caballo hostil roblox','A wild hostile horse NPC with untamed power charging through open fields.','Built with a naturalistic equine frame, this horse NPC supports galloping animations and can serve as either a hostile charging enemy or a tameable mount base.','Wild untamed horse with naturalistic galloping-ready frame'],
+['snowman','♦️⛄','Hostile Snowman Roblox NPC','Hostile snowman NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'hostile-snowman','NPC Muñeco de Nieve Hostil','NPC Hostil',
+ 'Un animado muñeco de nieve hostil con ataques de congelación y una presencia inquietante.',
+ 'Construido con secciones redondeadas apiladas y una expresión simple pero espeluznante, este NPC muñeco de nieve es perfecto para eventos temáticos de festividades o variedad de enemigos en biomas de invierno.',
+ 'Muñeco_de_Nieve','Muñeco de nieve hostil animado con secciones de cuerpo redondeadas apiladas','⛄','npc muñeco de nieve hostil','A hostile animated snowman NPC with freezing attacks and an unsettling presence.','Built from stacked rounded sections with a simple but eerie expression, this snowman NPC is a great fit for holiday-themed events or winter-biome enemy variety.','Animated hostile snowman with stacked rounded body sections'],
+['venus','♦️🌿','Venus Flytrap Hostile Roblox NPC','Venus flytrap hostile NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'venus-flytrap-hostile','NPC Venus Atrapamoscas Hostil','NPC Hostil',
+ 'Una masiva venus atrapamoscas hostil que golpea a los jugadores con mandíbulas afiladas como cuchillas.',
+ 'Escalada muy por encima de su tamaño del mundo real, esta NPC atrapamoscas tiene una sección de mandíbula articulada construida para animaciones de golpe rápido, ideal para encuentros de emboscada en pantanos o junglas.',
+ 'Venus_Atrapamoscas','Planta carnívora gigante con mecanismo de mandíbula articulada y afilada','🌿','npc venus atrapamoscas hostil','A massive hostile venus flytrap NPC that snaps at players with razor-sharp jaws.','Scaled up far beyond its real-world size, this flytrap NPC features a hinged jaw section built for fast snapping animations, ideal for swamp or jungle ambush encounters.','Giant carnivorous plant with hinged razor-jaw mechanism design'],
+['harpia','♦️🦅','Harpy Eagle Hostile Roblox NPC','Harpy eagle hostile NPC for Roblox, part of the Beasts and Monsters collection.',
+ 'harpy-eagle-hostile','NPC Harpia Harpyja Hostil','NPC Hostil',
+ 'Una feroz harpia harpyja sumergiéndose desde los cielos con garras afiladas y velocidad increíble.',
+ 'Construida con alas amplias y detalles prominentes de garras, esta harpia está diseñada para patrones de ataque en picado aéreo, siendo una gran incorporación para encuentros en el cielo y entre las copas de los árboles.',
+ 'Harpia_harpyja','Depredador aéreo ápex con alas amplias y diseño de garras afiladas prominentes','🦅','npc harpia harpyja hostil','A fearsome harpy eagle NPC diving from the skies with razor-sharp talons and incredible speed.','Built with broad wings and prominent talon details, this harpy eagle is designed for aerial dive-attack patterns, making it a strong addition to sky and treetop-based encounters.','Apex aerial predator with broad wings and sharp talon design'],
+];
+
+const BEAST_TOOLS=[
+{id:'lion',em:'🦁',name:'Beast Lion Tool Solar King Edition',
+ sum:'Roblox combo tool with 4-hit combo, solar roar, fury HUD and camera effects',
+ sumES:'Herramienta de combate scripted para Roblox con combo de 4 golpes, Rugido Solar y HUD de furia.',
+ slug:'beast-lion-solar-king',
+ descEN:`🦁 Beast Lion Tool — Solar King Edition
+
+Scripted combat tool for Roblox. ServerScript and LocalScript included, plug and play.
+
+「 ✦ COMBAT SYSTEM ✦ 」
+
+🦁 4-hit combo — Claw 1, Claw 2, Claw 3, Devastating Leap
+⚔️ Arc damage system with knockback per hit
+💥 Hit 4 launches a ground-slam with 360° damage
+🔥 Solar Roar — hold to charge up to 3 seconds, release for shockwave
+☀️ Full charge: meteor rain + solar corona + pillar explosion
+
+「 ✦ FURY SYSTEM ✦ 」
+
+⚡ Fury bar fills with every hit
+🔥 At max fury: double damage + solar mane projectiles on every claw
+💀 Combo 4 + max fury = DEVASTATOR mode
+
+「 ✦ VFX ✦ 」
+
+✨ Solar rings, light columns, spark showers
+🌞 Rotating solar corona
+☄️ Falling meteors with radial damage
+💡 Dynamic point lights on every effect
+
+「 ✦ HUD ✦ 」
+
+👑 Full on-screen HUD with fury bar, combo gems, charge bar
+📷 Camera shake, zoom effects and screen flash
+🎯 Solar crosshair that reacts to fury level
+
+「 ✦ TECH ✦ 」
+
+⚙️ AssemblyLinearVelocity — updated Roblox API
+📁 ServerScript + LocalScript included
+🔧 RemoteEvents pre-configured in ReplicatedStorage
+🟢 Plug and play — drop into any game`,
+ desc:`🦁 Beast Lion Tool — Solar King Edition\n\nHerramienta de combate scripted para Roblox. Incluye ServerScript y LocalScript, plug and play.\n\n「 ✦ SISTEMA DE COMBATE ✦ 」\n\n🦁 Combo de 4 golpes — Garra 1, Garra 2, Garra 3, Salto Devastador\n⚔️ Sistema de daño en arco con retroceso por golpe\n💥 El golpe 4 lanza un golpe al suelo con daño 360°\n🔥 Rugido Solar — mantén hasta 3 segundos y suelta para onda de choque\n☀️ Carga completa: lluvia de meteoritos + corona solar + explosión de pilares\n\n「 ✦ SISTEMA DE FURIA ✦ 」\n\n⚡ La barra de furia se llena con cada golpe\n🔥 Al máximo: daño doble + proyectiles de melena solar en cada garra\n💀 Combo 4 + furia máxima = modo DEVASTADOR\n\n「 ✦ VFX ✦ 」\n\n✨ Anillos solares, columnas de luz, lluvias de chispas\n🌞 Corona solar giratoria\n☄️ Meteoritos que caen con daño radial\n💡 Luces puntuales dinámicas en cada efecto\n\n「 ✦ HUD ✦ 」\n\n👑 HUD completo con barra de furia, gemas de combo y barra de carga\n📷 Temblor de cámara, efectos de zoom y destello de pantalla\n🎯 Mira solar que reacciona al nivel de furia\n\n「 ✦ TÉCNICO ✦ 」\n\n⚙️ AssemblyLinearVelocity — API actualizada de Roblox\n📁 ServerScript + LocalScript incluidos\n🔧 RemoteEvents preconfigurados en ReplicatedStorage\n🟢 Plug and play — instala en cualquier juego\n\n${HFOOT}`,
+ yt:'Combo de 4 golpes, Rugido Solar con lluvia de meteoritos, barra de furia HUD y efectos de cámara.',
+ tt:'🦁 Beast Lion Tool — Solar King Edition para Roblox\n\nCombo de 4 golpes, Rugido Solar con lluvia de meteoritos y modo DEVASTADOR 💥\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',
+ tip:'Muestra el combo completo, el Rugido Solar y el modo DEVASTADOR. La corona solar es muy visual para TikTok.',yt_en:'4-hit combo, Solar Roar with meteor rain, Fury bar HUD and camera effects.',tt_en:'🦁 Beast Lion Tool — Solar King Edition for Roblox\n\n4-hit combo, Solar Roar with meteor rain and DEVASTATOR mode 💥\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',tip_en:'Show the full combo, the Solar Roar and the DEVASTATOR mode. The solar corona looks great on TikTok.'},
+{id:'rhino',em:'🦏',name:'Beast Rhino Tool Seismic Bull Edition',
+ sum:'Roblox charge tool with rock pillars, horn eruption chain and camera HUD',
+ sumES:'Herramienta de carga scripted para Roblox con pilares de roca, cadena de erupciones de cuerno y HUD de cámara.',
+ slug:'beast-rhino-seismic-bull',
+ descEN:`🦏 Beast Rhino Tool — Seismic Bull Edition
+
+Scripted combat tool for Roblox. ServerScript and LocalScript included, plug and play.
+
+「 ✦ SEISMIC CHARGE ✦ 」
+
+🐾 Hold to charge up to 100% power — launch at 115 studs/second
+⚙️ Enemies hit during charge take 50% damage and get knocked sideways
+💥 On impact: 4 shockwave rings, 5 rock pillars in charge direction + lateral pillars
+🌍 3 ground cracks in charge axis and diagonals
+🪨 Dust, debris and massive light burst on landing
+⚡ Max charge: 80 damage, radius 18
+
+「 ✦ HORN ERUPTION ✦ 」
+
+💥 Single click fires a chain of 6 rock eruptions toward cursor
+🌋 Each eruption has its own damage radius, pillars and particles
+👑 6th eruption is the finale: double pillars, cross cracks, max damage bonus
+📷 Independent camera shake on final eruption
+
+「 ✦ HUD ✦ 」
+
+🦏 Charge bar fills with hold duration (0–100%)
+🎯 Mode selector: Charge / Eruption
+📷 Camera shake, screen flash and floating notifications
+🖱️ Rhino crosshair that pulses during charge
+
+「 ✦ TECH ✦ 」
+
+⚙️ AssemblyLinearVelocity — updated Roblox API
+📁 ServerScript + LocalScript included
+🔧 RemoteEvents pre-configured in ReplicatedStorage
+🟢 Plug and play — drop into any game`,
+ desc:`🦏 Beast Rhino Tool — Seismic Bull Edition\n\nHerramienta de combate scripted para Roblox. Incluye ServerScript y LocalScript, plug and play.\n\n「 ✦ CARGA SÍSMICA ✦ 」\n\n🐾 Mantén para cargar hasta 100% — lanza a 115 studs/segundo\n⚙️ Enemigos golpeados reciben 50% de daño y son empujados lateralmente\n💥 Al impactar: 4 anillos de onda de choque, 5 pilares de roca + pilares laterales\n🌍 3 grietas en el suelo en eje de carga y diagonales\n🪨 Polvo, escombros y destello masivo al aterrizar\n⚡ Carga máxima: 80 de daño, radio 18\n\n「 ✦ ERUPCIÓN DE CUERNO ✦ 」\n\n💥 Un clic activa una cadena de 6 erupciones de roca hacia el cursor\n🌋 Cada erupción tiene su propio radio de daño, pilares y partículas\n👑 La 6ª erupción: pilares dobles, grietas en cruz, bonus de daño máximo\n📷 Temblor de cámara independiente en la erupción final\n\n「 ✦ HUD ✦ 」\n\n🦏 Barra de carga (0–100%)\n🎯 Selector de modo: Carga / Erupción\n📷 Temblor de cámara, destello y notificaciones flotantes\n🖱️ Mira de rinoceronte que pulsa durante la carga\n\n「 ✦ TÉCNICO ✦ 」\n\n⚙️ AssemblyLinearVelocity — API actualizada de Roblox\n📁 ServerScript + LocalScript incluidos\n🔧 RemoteEvents preconfigurados en ReplicatedStorage\n🟢 Plug and play — instala en cualquier juego\n\n${HFOOT}`,
+ yt:'Carga con pilares de roca y onda de choque, cadena de 6 erupciones, HUD con barra de carga y efectos de cámara.',
+ tt:'🦏 Beast Rhino Tool — Seismic Bull Edition para Roblox\n\nCarga a 115 studs/segundo + cadena de 6 erupciones de cuerno 🌋💥\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',
+ tip:'Muestra la carga al 100% impactando enemigos y luego activa la cadena de 6 erupciones.',yt_en:'Charge attack with rock pillars and shockwave, 6-hit horn eruption chain, charge bar HUD and camera effects.',tt_en:'🦏 Beast Rhino Tool — Seismic Bull Edition for Roblox\n\n115 studs/second charge + 6-hit horn eruption chain 🌋💥\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',tip_en:'Show the 100% charge hitting enemies, then trigger the 6-hit eruption chain.'},
+{id:'whale',em:'🐳',name:'Beast Whale Tool Chain Tsunami Edition',
+ sum:'Roblox water tool with 3-column tsunami system, wave damage and orb HUD',
+ sumES:'Herramienta de agua scripted para Roblox con sistema de tsunami de 3 columnas y daño por oleada.',
+ slug:'beast-whale-chain-tsunami',
+ descEN:`🐳 Beast Whale Tool — Chain Tsunami Edition
+
+Scripted combat tool for Roblox. ServerScript and LocalScript included, plug and play.
+
+「 ✦ CHAIN COLUMNS ✦ 」
+
+💧 Click x3 to place 3 water columns at any target position
+🌊 Each column: 10 crystal segments, orbiting rings and inner point light
+🔵 Column 1 = blue · Column 2 = dark blue · Column 3 = red (warning)
+⚡ Columns wave, oscillate and glow in real time via RunService loop
+
+「 ✦ TSUNAMI SLAM ✦ 」
+
+💥 4th click activates the slam — all 3 columns vibrate red then fly toward target
+🌊 Each column base fires a radial water wave with random geysers
+🔵 3 concentric desynced rings expand from each base
+🏄 Tsunami wall: 11x5 block structure that advances and crushes everything in its path
+📡 Radial damage with distance falloff on every wave
+
+「 ✦ HUD ✦ 」
+
+🐳 3 orb indicators fill as you place columns
+⏳ Cooldown bar with seconds counter after slam
+📷 Camera shake on slam activation
+✛ Rotating crosshair follows mouse in world space
+
+「 ✦ TECH ✦ 」
+
+⚙️ AssemblyLinearVelocity — updated Roblox API
+📁 ServerScript + LocalScript included
+🔧 RemoteEvents pre-configured in ReplicatedStorage
+🟢 Plug and play — drop into any game`,
+ desc:`🐳 Beast Whale Tool — Chain Tsunami Edition\n\nHerramienta de combate scripted para Roblox. Incluye ServerScript y LocalScript, plug and play.\n\n「 ✦ COLUMNAS EN CADENA ✦ 」\n\n💧 Haz clic x3 para colocar 3 columnas de agua en cualquier posición\n🌊 Cada columna: 10 segmentos de cristal, anillos orbitantes y luz interior\n🔵 Columna 1 = azul · Columna 2 = azul oscuro · Columna 3 = roja (advertencia)\n⚡ Las columnas ondean, oscilan y brillan en tiempo real\n\n「 ✦ GOLPE TSUNAMI ✦ 」\n\n💥 El 4º clic activa el golpe — las 3 columnas vuelan hacia el objetivo\n🌊 Cada columna dispara una ola de agua radial con géiseres aleatorios\n🔵 3 anillos concéntricos desfasados se expanden desde cada base\n🏄 Muro tsunami: 11x5 bloques que avanza aplastando todo a su paso\n📡 Daño radial con caída por distancia\n\n「 ✦ HUD ✦ 」\n\n🐳 3 indicadores de orbe que se llenan al colocar columnas\n⏳ Barra de enfriamiento con contador de segundos\n📷 Temblor de cámara al activar el golpe\n✛ Mira giratoria en espacio del mundo\n\n「 ✦ TÉCNICO ✦ 」\n\n⚙️ AssemblyLinearVelocity — API actualizada de Roblox\n📁 ServerScript + LocalScript incluidos\n🔧 RemoteEvents preconfigurados en ReplicatedStorage\n🟢 Plug and play — instala en cualquier juego\n\n${HFOOT}`,
+ yt:'Sistema de agua de 3 columnas, muro tsunami de 11x5 bloques, ola radial con géiseres, HUD de orbes y barra de enfriamiento.',
+ tt:'🐳 Beast Whale Tool — Chain Tsunami Edition para Roblox\n\n3 columnas de agua → golpe tsunami → muro aplastando todo 🌊💀\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',
+ tip:'Coloca las 3 columnas y activa el tsunami mostrando el muro avanzando. El efecto es muy impactante.',yt_en:'3-column water system, 11x5 block tsunami wall, radial wave with geysers, orb HUD and cooldown bar.',tt_en:'🐳 Beast Whale Tool — Chain Tsunami Edition for Roblox\n\n3 water columns → tsunami slam → wall crushing everything 🌊💀\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',tip_en:'Place the 3 columns and trigger the tsunami showing the wall advancing. The effect is very impactful.'},
+{id:'scorp',em:'🦂',name:'Beast Scorpion Tool Eternal Desert Edition',
+ sum:'Roblox sand vortex tool with pull damage, shield mode and full HUD',
+ sumES:'Herramienta de vórtice de arena scripted para Roblox con torbellino de atracción y modo escudo.',
+ slug:'beast-scorpion-eternal-desert',
+ descEN:`🦂 Beast Scorpion Tool — Eternal Desert Edition
+
+Scripted combat tool for Roblox. ServerScript and LocalScript included, plug and play.
+
+「 ✦ SAND WHIRLWIND ✦ 」
+
+🌪️ Hold to summon a 3-layer rotating sand vortex in front of you
+🦂 Continuous pull and damage tick on every enemy inside the radius
+💥 Strong pulse every 4 seconds — extra pillar, ring burst and knockback launch
+🏜️ On release: massive sand explosion with 6 pillars in a star pattern
+⚡ Impact damage scales with distance, up to 50 on direct hit
+
+「 ✦ SAND SHIELD ✦ 」
+
+🛡️ Activate a 3-layer shield aura that follows you for 15 seconds
+🔻 Reduces incoming damage by 25% while active
+✨ Pulses every 4 seconds with rings and sand pillars around you
+⏳ 20-second cooldown after the shield expires
+
+「 ✦ HUD ✦ 」
+
+🦂 Mode selector: Whirlwind / Shield
+📈 Hold bar shows whirlwind charge duration
+⏳ Cooldown bar for the shield
+📷 Camera shake and screen flash on every effect
+🖱️ Rotating sand crosshair
+
+「 ✦ TECH ✦ 」
+
+⚙️ AssemblyLinearVelocity — updated Roblox API
+📁 ServerScript + LocalScript included
+🔧 RemoteEvents pre-configured in ReplicatedStorage
+🟢 Plug and play — drop into any game`,
+ desc:`🦂 Beast Scorpion Tool — Eternal Desert Edition\n\nHerramienta de combate scripted para Roblox. Incluye ServerScript y LocalScript, plug and play.\n\n「 ✦ TORBELLINO DE ARENA ✦ 」\n\n🌪️ Mantén para invocar un vórtice de arena de 3 capas giratorias\n🦂 Atracción y tick de daño continuo a cada enemigo dentro del radio\n💥 Pulso fuerte cada 4 segundos — pilar extra, ráfaga de anillo y retroceso\n🏜️ Al soltar: explosión masiva de arena con 6 pilares en estrella\n⚡ Daño de hasta 50 en golpe directo\n\n「 ✦ ESCUDO DE ARENA ✦ 」\n\n🛡️ Aura escudo de 3 capas durante 15 segundos\n🔻 Reduce el daño recibido un 25%\n✨ Pulsa cada 4 segundos con anillos y pilares de arena\n⏳ 20 segundos de enfriamiento tras expirar\n\n「 ✦ HUD ✦ 」\n\n🦂 Selector de modo: Torbellino / Escudo\n📈 Barra de carga del torbellino\n⏳ Barra de enfriamiento del escudo\n📷 Temblor de cámara y destello de pantalla\n🖱️ Mira de arena giratoria\n\n「 ✦ TÉCNICO ✦ 」\n\n⚙️ AssemblyLinearVelocity — API actualizada de Roblox\n📁 ServerScript + LocalScript incluidos\n🔧 RemoteEvents preconfigurados en ReplicatedStorage\n🟢 Plug and play — instala en cualquier juego\n\n${HFOOT}`,
+ yt:'Torbellino de Arena que atrae y daña enemigos, Escudo de Arena con 25% de reducción de daño, HUD con cambio de modo y efectos de cámara.',
+ tt:'🦂 Beast Scorpion Tool — Eternal Desert Edition para Roblox\n\nVórtice de arena que atrae enemigos + escudo con 25% menos daño 🌪️🛡️\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',
+ tip:'Muestra el torbellino atrayendo varios NPCs. Acaba con la explosión de 6 pilares al soltar.',yt_en:'Sand Whirlwind that pulls and damages enemies, Sand Shield with 25% damage reduction, mode-switch HUD and camera effects.',tt_en:'🦂 Beast Scorpion Tool — Eternal Desert Edition for Roblox\n\nSand vortex that pulls enemies + shield with 25% less damage 🌪️🛡️\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',tip_en:'Show the whirlwind pulling in several NPCs. End with the 6-pillar explosion on release.'},
+{id:'turt',em:'🐢',name:'Beast Turtle Tool Ancestral Colossus Edition',
+ sum:'Roblox charge-slam tool with rock pillars, ancestral shield and stalactite counterattack',
+ sumES:'Herramienta de golpe con carga scripted para Roblox con escudo ancestral y contraataque de estalactitas.',
+ slug:'beast-turtle-ancestral-colossus',
+ descEN:`🐢 Beast Turtle Tool — Ancestral Colossus Edition
+
+Scripted combat tool for Roblox. ServerScript and LocalScript included, plug and play.
+
+「 ✦ TERRAZO SLAM ✦ 」
+
+🐚 Click to charge toward the target and slam the ground with the shell
+🌍 Seismic impact: 3 concentric shockwave rings + 4 diagonal ground cracks
+🪨 8 rock pillars rise in a circle around the impact point
+💥 Radial damage with distance falloff, up to 55 damage on direct hit
+📷 Camera shake and screen flash on impact
+
+「 ✦ ANCESTRAL FORTRESS ✦ 」
+
+🛡️ Activate a 3-layer rock shell that follows you for 20 seconds
+🔻 Reduces incoming damage by 40% while active
+🗿 Each hit taken fires 4 stalactites at the nearest enemy
+💔 Breaks automatically after 3 hits — with a violent rock explosion
+⏳ 25-second cooldown if the shield breaks from damage
+
+「 ✦ HUD ✦ 」
+
+🐢 Mode selector: Terrazo / Fortress
+🛡️ 3-segment shield health bar (visual hit tracking)
+⏳ Cooldown bars for both abilities
+📷 Camera shake, screen flash and floating notifications
+🖱️ Turtle shell crosshair
+
+「 ✦ TECH ✦ 」
+
+⚙️ AssemblyLinearVelocity — updated Roblox API
+📁 ServerScript + LocalScript included
+🔧 RemoteEvents pre-configured in ReplicatedStorage
+🟢 Plug and play — drop into any game`,
+ desc:`🐢 Beast Turtle Tool — Ancestral Colossus Edition\n\nHerramienta de combate scripted para Roblox. Incluye ServerScript y LocalScript, plug and play.\n\n「 ✦ GOLPE TERRAZO ✦ 」\n\n🐚 Haz clic para cargar hacia el objetivo y golpear el suelo con el caparazón\n🌍 Impacto sísmico: 3 anillos de onda de choque + 4 grietas diagonales\n🪨 8 pilares de roca emergen en círculo alrededor del impacto\n💥 Daño radial hasta 55 en golpe directo\n📷 Temblor de cámara y destello de pantalla\n\n「 ✦ FORTALEZA ANCESTRAL ✦ 」\n\n🛡️ Caparazón de roca de 3 capas durante 20 segundos\n🔻 Reduce el daño recibido un 40%\n🗿 Cada golpe recibido dispara 4 estalactitas al enemigo más cercano\n💔 Se rompe tras 3 golpes con explosión de rocas\n⏳ 25 segundos de enfriamiento si se rompe\n\n「 ✦ HUD ✦ 」\n\n🐢 Selector de modo: Terrazo / Fortaleza\n🛡️ Barra de salud del escudo de 3 segmentos\n⏳ Barras de enfriamiento para ambas habilidades\n📷 Temblor de cámara, destello y notificaciones flotantes\n🖱️ Mira de caparazón de tortuga\n\n「 ✦ TÉCNICO ✦ 」\n\n⚙️ AssemblyLinearVelocity — API actualizada de Roblox\n📁 ServerScript + LocalScript incluidos\n🔧 RemoteEvents preconfigurados en ReplicatedStorage\n🟢 Plug and play — instala en cualquier juego\n\n${HFOOT}`,
+ yt:'Golpe de carga sísmico con onda de choque y pilares de roca, Fortaleza Ancestral que dispara estalactitas, HUD con barras de enfriamiento y escudo.',
+ tt:'🐢 Beast Turtle Tool — Ancestral Colossus Edition para Roblox\n\nEscudo que contraataca con estalactitas automáticamente + golpe sísmico 🗿💥\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',
+ tip:'Activa el escudo y deja que te golpeen para mostrar las estalactitas disparándose. Luego el Golpe Terrazo.',yt_en:'Seismic charge-slam with shockwave and rock pillars, Ancestral Fortress that fires stalactites, cooldown and shield HUD bars.',tt_en:'🐢 Beast Turtle Tool — Ancestral Colossus Edition for Roblox\n\nShield that auto-counters with stalactites + seismic slam 🗿💥\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame',tip_en:'Activate the shield and let yourself get hit to show the stalactites firing. Then show the Terrazo Slam.'},
+];
+
+const SCRIPT_ES=`🛠️ MONSTER PARTS CONNECTOR — Script para Roblox Studio
+
+¿Cansado de crear Motor6D manualmente para cada parte de tu monstruo? Este script lo hace todo automáticamente en segundos — sin más horas perdidas haciendo rigging a mano.
+
+Esta herramienta fue construida específicamente para la colección BEASTS & MONSTERS, pero funciona con cualquier modelo de monstruo organizado en carpetas, independientemente del tamaño o forma.
+
+「 ✦ QUÉ INCLUYE ✦ 」
+• Script .luau listo para usar en Roblox Studio
+• Versión 3 Final — estable y completamente probado en múltiples tipos de modelos
+• Código completamente comentado en español e inglés para personalización fácil
+• Configuración instantánea — solo cambia el nombre del modelo y ejecuta
+
+「 ✦ CARACTERÍSTICAS ✦ 」
+• Genera automáticamente TODAS las articulaciones Motor6D usando la estructura de carpetas
+• Detecta y asigna HumanoidRootPart automáticamente — crea uno si no existe
+• Elimina articulaciones y soldaduras anteriores antes de hacer rigging para evitar conflictos
+• Resalta las partes base en azul brillante durante 20 segundos para identificación fácil
+• Renombra todas las partes con numeración global ordenada automáticamente
+• Establece HumanoidRootPart con material ForceField para visibilidad clara en Studio
+• Ejecuta el resaltado base en un hilo separado para no bloquear el script
+• Compatible con modelos de cualquier tamaño, forma y estructura de carpetas
+• Soporta hasta 13 carpetas de extremidades: Cabeza, Cuerpo, 4 Patas, Cola, Colmillos, Garras, Alas y más
+
+「 ✦ CÓMO FUNCIONA ✦ 」
+1. Coloca tu modelo de monstruo en Workspace
+2. Cambia el nombre del modelo en la línea 1 del script
+3. Ejecuta el script en Roblox Studio
+4. Todas las articulaciones Motor6D se generan al instante en cada carpeta
+5. Las partes base brillan en azul para que puedas confirmar visualmente el rig
+6. Copia el modelo de vuelta desde Workspace — tu rig está listo para animar
+
+「 ✦ NOMBRES DE CARPETAS COMPATIBLES ✦ 」
+Cabeza, Cuerpo, Pata_Delantera_Derecha, Pata_Delantera_Izquierda, Pata_Trasera_Derecha, Pata_Trasera_Izquierda, Cola, Colmillos_Inferiores, Colmillos_Superiores, Garra_Delantera_Derecha, Garra_Delantera_Izquierda, AlaDerecha, AlaIzquierda
+
+「 ✦ PERFECTO PARA ✦ 」
+• Creadores de modelos de monstruos y bestias
+• Desarrolladores que usan animaciones Motor6D
+• Cualquier modelo con estructura de extremidades basada en carpetas
+• Desarrolladores de juegos RPG, supervivencia y mundo abierto
+• Cualquiera que construya rigs NPC personalizados para Roblox
+
+${HFOOT}`;
+
+const SCRIPT_EN=`🛠️ MONSTER PARTS CONNECTOR — Roblox Studio Script
+
+Tired of manually creating Motor6D for every part of your monster? This script does it all automatically in seconds — no more wasted hours rigging by hand.
+
+This tool was built specifically for the BEASTS & MONSTERS collection, but it works with any folder-organized monster model, regardless of size or shape.
+
+「 ✦ WHAT'S INCLUDED ✦ 」
+• .luau script ready to use in Roblox Studio
+• Version 3 Final — stable and fully tested across multiple model types
+• Fully commented code in Spanish and English for easy customization
+• Instant setup — just change the model name and run
+
+「 ✦ FEATURES ✦ 」
+• Auto-generates ALL Motor6D joints using folder structure
+• Auto-detects and assigns HumanoidRootPart — creates one automatically if missing
+• Removes previous joints and welds before rigging to avoid conflicts
+• Highlights base parts in glowing blue for 20 seconds for easy identification
+• Renames all parts with ordered global numbering automatically
+• Sets HumanoidRootPart with ForceField material for clear Studio visibility
+• Runs base highlighting in a separate thread so it never blocks the script
+• Compatible with models of any size, shape, and folder structure
+• Supports up to 13 limb folders: Head, Body, 4 Legs, Tail, Fangs, Claws, Wings and more
+
+「 ✦ HOW IT WORKS ✦ 」
+1. Place your monster model in Workspace
+2. Change the model name on line 1 of the script
+3. Run the script in Roblox Studio
+4. All Motor6D joints are generated instantly across every folder
+5. Base parts glow blue so you can visually confirm the rig
+6. Copy the model back from Workspace — your rig is ready to animate
+
+「 ✦ COMPATIBLE FOLDER NAMES ✦ 」
+Cabeza, Cuerpo, Pata_Delantera_Derecha, Pata_Delantera_Izquierda, Pata_Trasera_Derecha, Pata_Trasera_Izquierda, Cola, Colmillos_Inferiores, Colmillos_Superiores, Garra_Delantera_Derecha, Garra_Delantera_Izquierda, AlaDerecha, AlaIzquierda
+
+「 ✦ PERFECT FOR ✦ 」
+• Monster and beast model creators
+• Developers using Motor6D animations
+• Any model with folder-based limb structure
+• RPG, survival, and open world game developers
+• Anyone building custom NPC rigs for Roblox
+
+${FOOTER_EN}`;
+
+const SENTINEL_ES=`🔷 ARCANE SENTINEL v2 — Torreta NPC Auto-Construible para Roblox
+
+No es solo un script — es un sistema completo de torreta NPC que se ensambla sola. Coloca un modelo vacío llamado "🔵 Centinela Arcano" en Workspace, ejecuta el script y la Centinela construye su propio modelo 3D desde cero, se rig con articulaciones Motor6D y comienza inmediatamente a escanear y atacar a los jugadores cercanos.
+
+「 ✦ QUÉ INCLUYE ✦ 」
+• Script .luau completo de 874 líneas, comentado en español e inglés
+• Modelo de torreta auto-construible: plataforma base, cabeza giratoria, cañón con pitch, anillo de detección, pilares de cristal, lente de ojo brillante y punta del cañón
+• Todas las articulaciones Motor6D generadas automáticamente en tiempo de ejecución
+• GUI de advertencia en el personaje, construida completamente en código
+• Sistema de neón día/noche con transiciones suaves
+• Protección anti-duplicado: si el modelo ya existe, el script lo reutiliza sin reconstruirlo
+
+「 ✦ CARACTERÍSTICAS ✦ 」
+• Se auto-construye su modelo 3D de forma procedural — sin configuración manual
+• Puntería predictiva basada en la velocidad real del objetivo en tiempo real
+• Verificación de línea de visión por raycast antes de apuntar — las paredes bloquean
+• Explosión de área al impactar con daño escalado por distancia desde el centro
+• Ralentización: reduce la velocidad del jugador un 55% con partículas y highlight
+• GUI de advertencia sobre el jugador objetivo con texto rojo parpadeante
+• Rotación suave en yaw y pitch con tracking basado en lerp
+• Animación de pulso de radar en el anillo de detección
+• Día/Noche: las partes de neón se encienden de noche y apagan de día con _G.IsNight
+• Modo SOLO_DE_NOCHE: solo opera durante la noche
+• Sistema anti-duplicado con recuperación completa de referencias
+
+「 ✦ PARÁMETROS CONFIGURABLES ✦ 」
+RADIO_DETECCION · REQUIERE_VISION · VELOCIDAD_ROTACION · UMBRAL_DISPARO
+DANO_EXPLOSION · RADIO_EXPLOSION · VELOCIDAD_PROYECTIL · COOLDOWN_DISPARO
+RALENTIZACION_PORCENTAJE · RALENTIZACION_DURACION · FADE_DIA_NOCHE · SOLO_DE_NOCHE · ESCALA
+
+「 ✦ CÓMO FUNCIONA ✦ 」
+1. Crea un Model vacío en Workspace llamado "🔵 Centinela Arcano"
+2. Coloca el script en ServerScriptService
+3. Dale Play — la torreta se construye sola y comienza a operar
+4. Ajusta cualquier valor en CONFIG al inicio del script
+
+${HFOOT}`;
+
+const SENTINEL_EN=`🔷 ARCANE SENTINEL v2 — Self-Building Auto Turret NPC for Roblox
+
+It's not just a script — it's a complete NPC turret system that assembles itself. Place an empty model called "🔵 Centinela Arcano" in Workspace, run the script, and the Sentinel builds its own 3D model from scratch, rigs itself with Motor6D joints, and immediately starts scanning and attacking nearby players.
+
+「 ✦ WHAT'S INCLUDED ✦ 」
+• Full 874-line .luau script, commented in Spanish and English
+• Self-building turret model: base platform, rotating head, pitching cannon, detection ring, crystal pillars, glowing eye lens and cannon tip
+• All Motor6D joints generated automatically at runtime
+• On-character warning GUI, built entirely in code
+• Day/night neon system with smooth transitions
+• Anti-duplicate protection: if the model already exists, the script reuses it instead of rebuilding it
+
+「 ✦ FEATURES ✦ 」
+• Procedurally self-builds its own 3D model — no manual setup required
+• Predictive aiming based on the target's real-time velocity
+• Raycast line-of-sight check before aiming — walls block detection
+• Area explosion on impact with damage scaled by distance from the center
+• Slow debuff: reduces player speed by 55% with particles and highlight
+• Warning GUI over the targeted player with flashing red text
+• Smooth yaw and pitch rotation with lerp-based tracking
+• Radar pulse animation on the detection ring
+• Day/Night: neon parts turn on at night and off during the day via _G.IsNight
+• NIGHT_ONLY mode: only operates during the night
+• Anti-duplicate system with full reference recovery
+
+「 ✦ CONFIGURABLE PARAMETERS ✦ 」
+DETECTION_RADIUS · REQUIRES_LINE_OF_SIGHT · ROTATION_SPEED · FIRE_THRESHOLD
+EXPLOSION_DAMAGE · EXPLOSION_RADIUS · PROJECTILE_SPEED · FIRE_COOLDOWN
+SLOW_PERCENTAGE · SLOW_DURATION · DAY_NIGHT_FADE · NIGHT_ONLY · SCALE
+
+「 ✦ HOW IT WORKS ✦ 」
+1. Create an empty Model in Workspace called "🔵 Centinela Arcano"
+2. Place the script in ServerScriptService
+3. Press Play — the turret builds itself and starts operating
+4. Adjust any value in CONFIG at the start of the script
+
+${FOOTER_EN}`;
+
+// ─── RENDER HELPERS ──────────────────────────────────────────
+let uid=0;
+function F(label,content){
+  const id='x'+(uid++);
+  return `<div class="fld"><div class="flb"><span>${label}</span><button class="cpb" onclick="cp('${id}')">${LANG==='en'?'Copy':'Copiar'}<span class="ok" id="c-${id}">✓</span></button></div><pre id="${id}">${content.replace(/</g,'&lt;')}</pre></div>`;
+}
+function INF(html){return `<div class="inf">${html}</div>`;}
+function SL(cls,txt){return `<div class="sl ${cls}">${txt}</div>`;}
+
+// ─── BUILD PANELS ─────────────────────────────────────────────
+const LINKS_YT_EN=(slug)=>`🛒 Buy it (BuiltByBit): ${D.bbb}\n🎮 itch.io: ${D.itch}${slug}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}\n\nContact me if you have any questions.`;
+const TIPO_EN={'NPC de Bestia Pura':'Pure Beast NPC','NPC de Bestia Corrupta':'Corrupted Beast NPC','NPC Jefe':'Boss NPC','NPC Hostil':'Hostile NPC'};
+const LBL=(es,en)=>LANG==='en'?en:es;
+
+function buildNPCPanels(arr,plat){
+  const tabs=arr.map(([id])=>`<button class="ib" data-npctab="${plat}-npc-${id}" onclick="showNPC(this,'${plat}-npc-${id}')">${arr.find(a=>a[0]===id)[1].replace('💠','').replace('♦️','').trim()} ${arr.find(a=>a[0]===id)[LANG==='en'?2:5].split(' ').slice(0,2).join(' ')}</button>`).join('');
+
+  let panels='';
+  arr.forEach(([id,em,name_en,sum_en,slug,nombre_es,tipo_es,intro_es,detalle_es,archivo,feat_es,em_tt,tags_tt,intro_en,detalle_en,feat_en])=>{
+    const cleanName=name_en.replace(' Roblox NPC','');
+    const descES=npcDescES(em,nombre_es,tipo_es,intro_es,detalle_es,archivo,feat_es);
+    const descEN=npcDescEN(em,cleanName,TIPO_EN[tipo_es]||'NPC',intro_en,detalle_en,archivo,feat_en);
+    const shortName=nombre_es;
+
+    if(plat==='bbb'){
+      panels+=`<div id="bbb-npc-${id}" class="npc-panel">
+        ${F(LBL('Título (en inglés — requerido BBB)','Title (required in English by BBB)'),name_en)}
+        ${F(LBL('Summary (en inglés)','Summary'),sum_en)}
+        ${F(LBL('Descripción completa','Full description'),LANG==='en'?descEN:descES)}
+        ${F('Tags',TAGS_NPC)}
+        ${INF('<b>'+LBL('Precio','Price')+':</b> $15.00 · <b>'+LBL('Categoría','Category')+':</b> Roblox → Models · <b>'+LBL('Idiomas','Languages')+':</b> ✅ English · <b>Open source:</b> '+LBL('Sí','Yes')+' · <b>Utility:</b> Unscripted')}
+      </div>`;
+    } else if(plat==='itch'){
+      panels+=`<div id="itch-npc-${id}" class="npc-panel">
+        ${F(LBL('Título','Title'),LANG==='en'?cleanName+' — Roblox NPC':shortName+' — NPC Roblox')}
+        ${F(LBL('URL del proyecto','Project URL'),slug)}
+        ${F(LBL('Descripción corta / tagline','Short description / tagline'),LANG==='en'?sum_en:intro_es)}
+        ${F(LBL('Descripción completa','Full description'),LANG==='en'?descEN:descES)}
+        ${F('Tags',TAGS_NPC)}
+        ${INF('<b>'+LBL('Precio','Price')+':</b> Paid $15.00 · <b>'+LBL('Tipo','Type')+':</b> Downloadable · <b>Custom noun:</b> asset · <b>AI Disclosure:</b> No')}
+      </div>`;
+    } else if(plat==='yt'){
+      panels+=`<div id="yt-npc-${id}" class="npc-panel">
+        ${F(LBL('Título del vídeo','Video title'),LANG==='en'?'[FOR SALE] '+cleanName+' | Roblox Studio':'[EN VENTA] '+name_en.replace(' Roblox NPC','')+' | Roblox Studio')}
+        ${F(LBL('Descripción YT','YT description'),LANG==='en'
+          ?('#robloxdev #robloxstudio #roblox\n\n'+cleanName+' for Roblox.\n'+intro_en+'\n\n'+LINKS_YT_EN(slug))
+          :('#robloxdev #robloxstudio #roblox\n\n'+shortName+' para Roblox.\n'+intro_es+'\n\n'+LINKS_YT(slug)))}
+      </div>`;
+    } else if(plat==='tt'){
+      const emoji=em.replace('💠','').replace('♦️','').trim();
+      panels+=`<div id="tt-npc-${id}" class="npc-panel">
+        ${F('Caption TikTok',LANG==='en'
+          ?(emoji+' '+cleanName+' — Roblox NPC\n\n'+intro_en.split('.')[0]+'.\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #npc #beast #monster #robloxgame #luau #'+tags_tt.replace(/ /g,''))
+          :(emoji+' '+shortName+' — NPC para Roblox\n\n'+intro_es.split('.')[0]+'.\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #npc #beast #monster #robloxgame #luau #'+tags_tt.replace(/ /g,'')))}
+      </div>`;
+    }
+  });
+  return {tabs,panels};
+}
+
+function buildBeastPanels(plat){
+  const tabs=BEAST_TOOLS.map(b=>`<button class="ib" data-npctab="${plat}-bt-${b.id}" onclick="showNPC(this,'${plat}-bt-${b.id}')">${b.em} ${b.id.charAt(0).toUpperCase()+b.id.slice(1)}</button>`).join('');
+  let panels='';
+  BEAST_TOOLS.forEach(b=>{
+    const itchTitle=b.name.replace('Tool ','Tool — ').replace(/Edition$/,'Edition (Roblox)');
+    if(plat==='bbb'){
+      panels+=`<div id="bbb-bt-${b.id}" class="npc-panel">
+        ${F(LBL('Título','Title'),b.name)}${F('Summary',b.sum)}${F(LBL('Descripción completa (en inglés — requerido BBB)','Full description (English — required by BBB)'),b.descEN+'\n\n'+FOOTER_EN)}
+        ${F('Tags',TAGS_BEAST)}
+        ${INF('<b>'+LBL('Precio','Price')+':</b> $20.00 · <b>'+LBL('Tipo','Type')+':</b> ✅ Sword · <b>Utility:</b> ✅ Scripted · <b>'+LBL('Idiomas','Languages')+':</b> ✅ English')}
+      </div>`;
+    } else if(plat==='itch'){
+      panels+=`<div id="itch-bt-${b.id}" class="npc-panel">
+        ${F(LBL('Título','Title'),itchTitle)}${F('URL',b.slug)}${F(LBL('Descripción corta / tagline','Short description / tagline'),LANG==='en'?b.sum:b.sumES)}${F(LBL('Descripción completa','Full description'),LANG==='en'?b.descEN+'\n\n'+FOOTER_EN:b.desc)}${F('Tags',TAGS_BEAST)}
+        ${INF('<b>'+LBL('Precio','Price')+':</b> Paid $20.00 · <b>'+LBL('Tipo','Type')+':</b> Downloadable · <b>Custom noun:</b> asset · <b>AI Disclosure:</b> No')}
+      </div>`;
+    } else if(plat==='yt'){
+      panels+=`<div id="yt-bt-${b.id}" class="npc-panel">
+        ${F(LBL('Título','Title'),LANG==='en'?'[FOR SALE] '+b.name.replace('Tool ','Tool — ')+' | Roblox Studio':'[EN VENTA] '+b.name.replace('Tool ','Tool — ')+' | Roblox Studio')}
+        ${F(LBL('Descripción','Description'),LANG==='en'
+          ?('#robloxdev #robloxstudio #roblox\n\n'+b.em+' '+b.name.replace('Tool ','Tool — ')+'.\n'+b.yt_en+'\n\n'+LINKS_YT_EN(b.slug))
+          :('#robloxdev #robloxstudio #roblox\n\n'+b.em+' '+b.name.replace('Tool ','Tool — ')+'.\n'+b.yt+'\n\n'+LINKS_YT(b.slug)))}
+      </div>`;
+    } else if(plat==='tt'){
+      panels+=`<div id="tt-bt-${b.id}" class="npc-panel">
+        ${F('Caption TikTok',LANG==='en'?b.tt_en:b.tt)}${INF('<b>'+LBL('Consejo','Tip')+':</b> '+(LANG==='en'?b.tip_en:b.tip))}
+      </div>`;
+    }
+  });
+  return {tabs,panels};
+}
+
+// ─── BUILD ALL PLATFORMS ──────────────────────────────────────
+const pbar=document.getElementById('pbar');
+const pp=document.getElementById('pp');
+let LANG='es';
+
+const CH_DESC_ES='🔥 Beasts & Monsters — Desarrollador de juegos Roblox\n\n🐲 Creo bestias, monstruos, NPCs jefe y herramientas de combate para Roblox — con mucho VFX, plug-and-play, listas para cualquier juego.\n⚔️ Cada herramienta incluye ServerScript + LocalScript, HUD personalizado, efectos de cámara y sistemas de combate balanceados.\n🎮 Nuevas herramientas beast, devlogs y showcases cada semana.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Compra mis assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 Todos mis links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
+const CH_DESC_EN='🔥 Beasts & Monsters — Roblox Game Developer\n\n🐲 I build scripted beasts, monsters, boss NPCs and combat tools for Roblox — VFX-heavy, plug-and-play, ready to drop into any game.\n⚔️ Every tool ships with ServerScript + LocalScript, a custom HUD, camera effects and balanced combat systems.\n🎮 New beast tools, devlogs and showcases every week.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Buy my assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 All my links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
+
+function buildAll(){
+  pbar.innerHTML='';
+  pp.innerHTML='';
+  uid=0;
+
+[
+  {id:'bbb',lbl:'🛒 BuiltByBit',cls:'bbb'},
+  {id:'itch',lbl:'🎮 itch.io',cls:'itch'},
+  {id:'yt',lbl:'▶️ YouTube',cls:'yt'},
+  {id:'tt',lbl:'🎵 TikTok',cls:'tt'},
+].forEach((pl,i)=>{
+  const btn=document.createElement('button');
+  btn.className='pb'+(i===0?' '+pl.cls:'');
+  btn.textContent=pl.lbl;
+  btn.onclick=()=>activatePlat(pl.id,btn,pl.cls);
+  pbar.appendChild(btn);
+
+  const panel=document.createElement('div');
+  panel.id='plat-'+pl.id;
+  panel.className='plat-panel'+(i===0?' active':'');
+
+  const beast=buildBeastPanels(pl.id);
+  const pure=buildNPCPanels(PURE,pl.id);
+  const corrupt=buildNPCPanels(CORRUPT,pl.id);
+  const boss=buildNPCPanels(BOSSES,pl.id);
+  const npc=buildNPCPanels(NPCS,pl.id);
+
+  let html='';
+
+  if(pl.id==='bbb'){
+    html+=SL('sl-beast','🦁 Beast Tools ('+LBL('Herramientas de combate','Combat tools')+')');
+    html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
+    html+=SL('sl-pure','💠👑 Pure Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${pure.tabs}</div>${pure.panels}</div>`;
+    html+=SL('sl-corrupt','💠🩸 Corrupted Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${corrupt.tabs}</div>${corrupt.panels}</div>`;
+    html+=SL('sl-boss','♦️👑 Bosses');
+    html+=`<div class="npc-group"><div class="ibar">${boss.tabs}</div>${boss.panels}</div>`;
+    html+=SL('sl-npc','♦️👹 Hostile NPCs');
+    html+=`<div class="npc-group"><div class="ibar">${npc.tabs}</div>${npc.panels}</div>`;
+    html+=SL('sl-script','🛠️ Monster Parts Connector Script');
+    html+=F(LBL('Título','Title'),'Monster Parts Connector Motor6D Roblox Script');
+    html+=F('Summary','Script that automatically connects all your monster parts using Motor6D in Roblox Studio.');
+    html+=F(LBL('Descripción completa','Full description'),LANG==='en'?SCRIPT_EN:SCRIPT_ES);
+    html+=F('Tags',TAGS_SCRIPT);
+    html+=INF('<b>'+LBL('Precio','Price')+':</b> $50.00 · <b>'+LBL('Categoría','Category')+':</b> Roblox → Scripts · <b>'+LBL('Idiomas','Languages')+':</b> ✅ English · <b>Utility:</b> Scripted');
+    html+=SL('sl-sentinel','🔷 Arcane Sentinel v2');
+    html+=F(LBL('Título','Title'),'Arcane Sentinel Auto Turret Roblox NPC Script');
+    html+=F('Summary','Auto-building turret NPC with predictive aiming, area explosions, slow debuff, day/night system, and anti-duplicate logic.');
+    html+=F(LBL('Descripción completa','Full description'),LANG==='en'?SENTINEL_EN:SENTINEL_ES);
+    html+=F('Tags',TAGS_SENT);
+    html+=INF('<b>'+LBL('Precio','Price')+':</b> $25.00 · <b>'+LBL('Categoría','Category')+':</b> Roblox → Scripts · <b>Utility:</b> Scripted · <b>'+LBL('Idiomas','Languages')+':</b> ✅ English');
+  }
+
+  if(pl.id==='itch'){
+    html+=SL('sl-beast','🦁 Beast Tools');
+    html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
+    html+=SL('sl-pure','💠👑 Pure Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${pure.tabs}</div>${pure.panels}</div>`;
+    html+=SL('sl-corrupt','💠🩸 Corrupted Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${corrupt.tabs}</div>${corrupt.panels}</div>`;
+    html+=SL('sl-boss','♦️👑 Bosses');
+    html+=`<div class="npc-group"><div class="ibar">${boss.tabs}</div>${boss.panels}</div>`;
+    html+=SL('sl-npc','♦️👹 Hostile NPCs');
+    html+=`<div class="npc-group"><div class="ibar">${npc.tabs}</div>${npc.panels}</div>`;
+    html+=SL('sl-script','🛠️ Monster Parts Connector');
+    html+=F(LBL('Título','Title'),LANG==='en'?'Monster Parts Connector — Motor6D Script (Roblox)':'Monster Parts Connector — Script Motor6D (Roblox)');
+    html+=F('URL','monster-parts-connector-roblox');
+    html+=F(LBL('Descripción corta','Short description'),LANG==='en'
+      ?'Script that automatically connects all the parts of your monster with Motor6D in Roblox Studio in seconds.'
+      :'Script que conecta automáticamente todas las partes de tu monstruo con Motor6D en Roblox Studio en segundos.');
+    html+=F(LBL('Descripción completa','Full description'),LANG==='en'?SCRIPT_EN:SCRIPT_ES);
+    html+=F('Tags',TAGS_SCRIPT);
+    html+=INF('<b>'+LBL('Precio','Price')+':</b> Paid $50.00 · <b>'+LBL('Tipo','Type')+':</b> Downloadable · <b>Custom noun:</b> script · <b>AI Disclosure:</b> No');
+    html+=SL('sl-sentinel','🔷 Arcane Sentinel v2');
+    html+=F(LBL('Título','Title'),'Arcane Sentinel v2 — Auto Turret NPC Script (Roblox)');
+    html+=F('URL','arcane-sentinel-auto-turret-roblox');
+    html+=F(LBL('Descripción corta','Short description'),LANG==='en'
+      ?'Self-building turret NPC script with predictive aiming, area explosions, a slow debuff and a day/night system.'
+      :'Script de torreta NPC auto-construible con puntería predictiva, explosiones de área, ralentización y sistema día/noche.');
+    html+=F(LBL('Descripción completa','Full description'),LANG==='en'?SENTINEL_EN:SENTINEL_ES);
+    html+=F('Tags',TAGS_SENT);
+    html+=INF('<b>'+LBL('Precio','Price')+':</b> Paid $25.00 · <b>'+LBL('Tipo','Type')+':</b> Downloadable · <b>Custom noun:</b> script · <b>AI Disclosure:</b> No');
+    html+=SL('sl-ch','⚙️ '+LBL('Ajustes comunes itch.io','Common itch.io settings'));
+    html+=INF(LANG==='en'
+      ?'<b>Classification:</b> Tools (not Games) · <b>Status:</b> Released · <b>Genre:</b> No genre · <b>Community:</b> Comments · <b>Visibility:</b> Public (after saving) · <b>Screenshots:</b> 3–5 in-game captures from Roblox Studio'
+      :'<b>Clasificación:</b> Tools (no Games) · <b>Estado:</b> Released · <b>Género:</b> No genre · <b>Community:</b> Comments · <b>Visibilidad:</b> Public (después de guardar) · <b>Screenshots:</b> 3–5 capturas in-game en Roblox Studio');
+  }
+
+  if(pl.id==='yt'){
+    html+=SL('sl-ch','📺 '+LBL('Descripción del canal (About)','Channel description (About)'));
+    html+=F(LBL('Descripción del canal','Channel description'),LANG==='en'?CH_DESC_EN:CH_DESC_ES);
+    html+=SL('sl-beast','🦁 Beast Tools');
+    html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
+    html+=SL('sl-pure','💠👑 Pure Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${pure.tabs}</div>${pure.panels}</div>`;
+    html+=SL('sl-corrupt','💠🩸 Corrupted Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${corrupt.tabs}</div>${corrupt.panels}</div>`;
+    html+=SL('sl-boss','♦️👑 Bosses');
+    html+=`<div class="npc-group"><div class="ibar">${boss.tabs}</div>${boss.panels}</div>`;
+    html+=SL('sl-npc','♦️👹 Hostile NPCs');
+    html+=`<div class="npc-group"><div class="ibar">${npc.tabs}</div>${npc.panels}</div>`;
+    html+=SL('sl-script','🛠️ Monster Parts Connector');
+    html+=F(LBL('Título','Title'),LANG==='en'?'[FOR SALE] Monster Parts Connector Motor6D — Roblox Studio Script':'[EN VENTA] Monster Parts Connector Motor6D — Script Roblox Studio');
+    html+=F(LBL('Descripción','Description'),LANG==='en'
+      ?('#robloxdev #robloxstudio #roblox\n\nMonster Parts Connector Motor6D for Roblox Studio.\nAutomatically generates all your monster\'s Motor6D joints in seconds. Compatible with any folder-organized model.\n\n'+LINKS_YT_EN('monster-parts-connector-roblox'))
+      :('#robloxdev #robloxstudio #roblox\n\nMonster Parts Connector Motor6D para Roblox Studio.\nGenera automáticamente todas las articulaciones Motor6D de tu monstruo en segundos. Compatible con cualquier modelo organizado en carpetas.\n\n'+LINKS_YT('monster-parts-connector-roblox')));
+    html+=SL('sl-sentinel','🔷 Arcane Sentinel v2');
+    html+=F(LBL('Título','Title'),LANG==='en'?'[FOR SALE] Arcane Sentinel v2 — Self-Building Turret NPC | Roblox Studio':'[EN VENTA] Arcane Sentinel v2 — Torreta NPC Auto-Construible | Roblox Studio');
+    html+=F(LBL('Descripción','Description'),LANG==='en'
+      ?('#robloxdev #robloxstudio #roblox\n\nArcane Sentinel v2 — Self-building turret NPC system for Roblox.\nBuilds its own 3D model, predictive aiming, area explosions, 55% slow debuff, day/night system and anti-duplicate protection.\n\n'+LINKS_YT_EN('arcane-sentinel-auto-turret-roblox'))
+      :('#robloxdev #robloxstudio #roblox\n\nArcane Sentinel v2 — Sistema de torreta NPC auto-construible para Roblox.\nSe construye su propio modelo 3D, puntería predictiva, explosiones de área, ralentización 55%, sistema día/noche y protección anti-duplicado.\n\n'+LINKS_YT('arcane-sentinel-auto-turret-roblox')));
+  }
+
+  if(pl.id==='tt'){
+    html+=SL('sl-ch','👤 '+LBL('Bio del perfil TikTok','TikTok profile bio'));
+    html+=F(LBL('Bio (máx 80 caracteres)','Bio (max 80 characters)'),LANG==='en'
+      ?'🐲 Beasts & Monsters — Roblox Dev\n🛒 Assets on BuiltByBit → link in bio'
+      :'🐲 Beasts & Monsters — Roblox Dev\n🛒 Assets en BuiltByBit → link en bio');
+    html+=F(LBL('Link en bio','Bio link'),D.atom);
+    html+=INF(LANG==='en'
+      ?'<b>Fixed hashtags:</b> #roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame<br><b>Tip:</b> 15–30s videos. Show the most impressive effect in the first 3 seconds. Use trending audio.'
+      :'<b>Hashtags fijos:</b> #roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame<br><b>Consejo:</b> Vídeos de 15–30s. El efecto más impresionante en los primeros 3 segundos. Usa música de tendencia.');
+    html+=SL('sl-beast','🦁 Beast Tools');
+    html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
+    html+=SL('sl-pure','💠👑 Pure Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${pure.tabs}</div>${pure.panels}</div>`;
+    html+=SL('sl-corrupt','💠🩸 Corrupted Beasts');
+    html+=`<div class="npc-group"><div class="ibar">${corrupt.tabs}</div>${corrupt.panels}</div>`;
+    html+=SL('sl-boss','♦️👑 Bosses');
+    html+=`<div class="npc-group"><div class="ibar">${boss.tabs}</div>${boss.panels}</div>`;
+    html+=SL('sl-npc','♦️👹 Hostile NPCs');
+    html+=`<div class="npc-group"><div class="ibar">${npc.tabs}</div>${npc.panels}</div>`;
+    html+=SL('sl-script','🛠️ Monster Parts Connector');
+    html+=F('Caption TikTok',LANG==='en'
+      ?'🛠️ Monster Parts Connector Motor6D for Roblox Studio\n\nManual rigging? That\'s what this script is for — it auto-generates every Motor6D in seconds 🤖⚙️\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #luau #script #motor6d #npc #beast #rigging'
+      :'🛠️ Monster Parts Connector Motor6D para Roblox Studio\n\n¿Rigging manual? Para eso está este script — genera todos los Motor6D en segundos automáticamente 🤖⚙️\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #luau #script #motor6d #npc #beast #rigging');
+    html+=INF('<b>'+LBL('Consejo','Tip')+':</b> '+(LANG==='en'
+      ?'Show the script in action: unrigged model → run the script → rigged model with parts glowing blue.'
+      :'Muestra el script en acción: modelo sin rig → ejecutas el script → modelo rigged con partes brillando en azul.'));
+    html+=SL('sl-sentinel','🔷 Arcane Sentinel v2');
+    html+=F('Caption TikTok',LANG==='en'
+      ?'🔷 Arcane Sentinel v2 — Turret NPC for Roblox\n\nBuilds itself, aims itself, and slows you 55% if it hits you 👁️⚡\n\n🛒 For sale on BuiltByBit → link in bio\n#roblox #robloxdev #robloxstudio #gamedev #npc #combat #luau #turret #ai #robloxgame'
+      :'🔷 Arcane Sentinel v2 — Torreta NPC para Roblox\n\nSe construye sola, se apunta sola y te ralentiza 55% si te toca 👁️⚡\n\n🛒 En venta en BuiltByBit → link en bio\n#roblox #robloxdev #robloxstudio #gamedev #npc #combat #luau #turret #ai #robloxgame');
+    html+=INF('<b>'+LBL('Consejo','Tip')+':</b> '+(LANG==='en'
+      ?'The real-time model self-construction is the most striking moment. Show that first.'
+      :'La auto-construcción del modelo en tiempo real es el momento más impactante. Muestra eso primero.'));
+  }
+
+  panel.innerHTML=html;
+  pp.appendChild(panel);
+});
+}
+
+buildAll();
+
+// ─── INTERACTIONS ─────────────────────────────────────────────
+function activatePlat(id,btn,cls){
+  document.querySelectorAll('.plat-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.pb').forEach(b=>b.className='pb');
+  document.getElementById('plat-'+id).classList.add('active');
+  btn.classList.add(cls);
+  // auto-select the first item in EVERY group (ibar), not just the first one overall
+  document.querySelectorAll('#plat-'+id+' .ibar').forEach(ib=>{
+    const first=ib.querySelector('.ib');
+    if(first)first.click();
+  });
+}
+
+function showNPC(btn,key){
+  const group=btn.closest('.npc-group');
+  // deactivate all tabs in this group
+  group.querySelectorAll('.ib').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // hide all panels in this group only, then show the target one
+  group.querySelectorAll('.npc-panel').forEach(p=>p.classList.remove('active'));
+  const target=document.getElementById(key);
+  if(target)target.classList.add('active');
+}
+
+function cp(id){
+  const el=document.getElementById(id);if(!el)return;
+  navigator.clipboard.writeText(el.textContent).then(()=>{
+    const ok=document.getElementById('c-'+id);
+    if(ok){ok.classList.add('show');setTimeout(()=>ok.classList.remove('show'),2000);}
+  });
+}
+
+function setLang(lang){
+  LANG=lang;
+  document.getElementById('lb-es').classList.toggle('active',lang==='es');
+  document.getElementById('lb-en').classList.toggle('active',lang==='en');
+  buildAll();
+  const first=document.querySelector('.pb');
+  if(first)first.click();
+}
+
+// Init
+document.querySelector('.pb').click();
+</script>
+</body>
+</html>
