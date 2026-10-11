@@ -18,6 +18,9 @@ h1{font-size:14px;color:#fa0;margin-bottom:2px}
 .pb.itch{border-color:#f77;color:#f77;background:#180808}
 .pb.yt{border-color:#f44;color:#f44;background:#180404}
 .pb.tt{border-color:#69c9d0;color:#69c9d0;background:#020e10}
+.pb.perfil{border-color:#fa0;color:#fa0;background:#1e1400}
+.pb.gracias{border-color:#c9f;color:#c9f;background:#140a1e}
+.gsel{width:100%;padding:8px;margin-bottom:8px;border-radius:5px;border:1px solid #2a2a2a;background:#151515;color:#ddd;font-size:12px}
 .sl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:3px 8px;border-radius:3px;margin:10px 0 5px;display:inline-block}
 .sl-pure{background:#061a2e;color:#7cf}.sl-corrupt{background:#1e0606;color:#f77}
 .sl-boss{background:#1e0e00;color:#fa0}.sl-npc{background:#061e06;color:#7f7}
@@ -789,6 +792,181 @@ let LANG='es';
 const CH_DESC_ES='🔥 Beasts & Monsters — Desarrollador de juegos Roblox\n\n🐲 Creo bestias, monstruos, NPCs jefe y herramientas de combate para Roblox — con mucho VFX, plug-and-play, listas para cualquier juego.\n⚔️ Cada herramienta incluye ServerScript + LocalScript, HUD personalizado, efectos de cámara y sistemas de combate balanceados.\n🎮 Nuevas herramientas beast, devlogs y showcases cada semana.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Compra mis assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 Todos mis links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
 const CH_DESC_EN='🔥 Beasts & Monsters — Roblox Game Developer\n\n🐲 I build scripted beasts, monsters, boss NPCs and combat tools for Roblox — VFX-heavy, plug-and-play, ready to drop into any game.\n⚔️ Every tool ships with ServerScript + LocalScript, a custom HUD, camera effects and balanced combat systems.\n🎮 New beast tools, devlogs and showcases every week.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Buy my assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 All my links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
 
+
+// ─── PERFIL + SCRIPT DE AGRADECIMIENTO ───────────────────────
+const PERFIL_ES=`🐉 DRAGÓN PRIMORDIAL — Game Developer & Beast Creator
+🔥 Creo bestias. Construyo mundos. Doy vida a criaturas.
+Soy Dragón Primordial, desarrollador independiente de videojuegos y creador de bestias, monstruos, NPCs jefe, sistemas de combate y herramientas para videojuegos.
+🎮 Mis proyectos principales
+🦁 Bestias y Monstruos — Roblox
+Un mundo salvaje lleno de bestias, monstruos, criaturas poderosas y combates épicos. Creo NPCs jefe, herramientas de combate, habilidades y recursos diseñados para integrarse fácilmente en otros juegos de Roblox.
+🐲 Bestias: Génesis — Godot 4.7
+Mi propio juego 3D de acción y supervivencia, desarrollado con GDScript. Construyo los modelos 3D, materiales, animaciones y sistemas mediante código, generados en tiempo de ejecución.
+⚔️ Mis creaciones
+
+* Bestias y monstruos con diseños únicos.
+* NPCs jefe y sistemas de combate.
+* Herramientas de combate con efectos visuales (VFX).
+* Interfaces personalizadas, efectos de cámara y habilidades.
+* Recursos diseñados para una integración sencilla en proyectos de Roblox.
+* Desarrollo de videojuegos 3D mediante código.
+
+🚀 Mi objetivo
+Crear criaturas memorables, desarrollar mundos salvajes y compartir mis creaciones con otros desarrolladores. Cada proyecto es una oportunidad para aprender, experimentar y llevar mis ideas más lejos.
+「 ✦ MIS ENLACES ✦ 」
+🛒 BuiltByBit — Mis recursos y creaciones
+${D.bbb}
+🎮 itch.io — Mis proyectos
+${D.itch}
+🐦 X / Twitter
+${D.tw}
+🎵 TikTok
+${D.tt}
+💬 Discord — Comunidad
+${D.disc}
+☕ Ko-fi — Apoya mi trabajo
+${D.kofi}
+🌐 Todos mis enlaces
+${D.atom}
+━━━━━━━━━━━━━━━━━━━━
+🐉 DRAGÓN PRIMORDIAL
+Un universo de bestias, monstruos y videojuegos creados con imaginación, código y pasión.
+🦁 Bestias y Monstruos — Era Salvaje
+🐲 Bestias: Génesis — Godot 3D`;
+
+const PERFIL_EN=`🐉 DRAGÓN PRIMORDIAL — Game Developer & Beast Creator
+🔥 I create beasts. I build worlds. I bring creatures to life.
+I'm Dragón Primordial, an independent game developer and creator of beasts, monsters, boss NPCs, combat systems and game tools.
+🎮 My main projects
+🦁 Bestias y Monstruos — Roblox
+A wild world full of beasts, monsters, powerful creatures and epic fights. I create boss NPCs, combat tools, abilities and assets designed to drop easily into other Roblox games.
+🐲 Bestias: Génesis — Godot 4.7
+My own 3D action and survival game, built with GDScript. I build the 3D models, materials, animations and systems entirely in code, generated at runtime.
+⚔️ My creations
+
+* Beasts and monsters with unique designs.
+* Boss NPCs and combat systems.
+* Combat tools with visual effects (VFX).
+* Custom interfaces, camera effects and abilities.
+* Assets designed for easy integration into Roblox projects.
+* 3D game development through code.
+
+🚀 My goal
+To create memorable creatures, build wild worlds and share my creations with other developers. Every project is a chance to learn, experiment and take my ideas further.
+「 ✦ MY LINKS ✦ 」
+🛒 BuiltByBit — My resources and creations
+${D.bbb}
+🎮 itch.io — My projects
+${D.itch}
+🐦 X / Twitter
+${D.tw}
+🎵 TikTok
+${D.tt}
+💬 Discord — Community
+${D.disc}
+☕ Ko-fi — Support my work
+${D.kofi}
+🌐 All my links
+${D.atom}
+━━━━━━━━━━━━━━━━━━━━
+🐉 DRAGÓN PRIMORDIAL
+A universe of beasts, monsters and games built with imagination, code and passion.
+🦁 Bestias y Monstruos — Wild Era
+🐲 Bestias: Génesis — Godot 3D`;
+
+// kind: 'npc' | 'tool' | 'script'
+const GRACIAS_WORDS={
+  es:{npc:['este NPC','tu nueva criatura'],tool:['esta herramienta','tu nueva herramienta'],script:['este script','tu nuevo script']},
+  en:{npc:['this NPC','your new creature'],tool:['this tool','your new tool'],script:['this script','your new script']}
+};
+function graciasScript(name,kind,lang){
+  const w=GRACIAS_WORDS[lang][kind];
+  if(lang==='en') return `--[[
+    ============================================================
+                       DRAGÓN PRIMORDIAL
+                THANK YOU FOR YOUR PURCHASE!
+    ============================================================
+
+    Creator: Dragón Primordial
+    Product: ${name}
+    Version: Check the resource page for the latest version.
+
+    Thank you for buying my product!
+    Your support means a lot to me and helps me keep
+    creating new beasts, monsters and creatures.
+
+    If you enjoy ${w[0]}, feel free to check out my
+    other creations from the Dragón Primordial collection!
+
+    Please do not redistribute or resell this product
+    without my permission.
+
+    Enjoy ${w[1]}!
+
+    - Dragón Primordial
+    ============================================================
+]]`;
+  return `--[[
+    ============================================================
+                       DRAGÓN PRIMORDIAL
+                   ¡GRACIAS POR TU COMPRA!
+    ============================================================
+
+    Creador: Dragón Primordial
+    Producto: ${name}
+    Versión: Consulta la página del recurso para ver la última versión.
+
+    ¡Gracias por comprar mi producto!
+    Tu apoyo significa mucho para mí y me ayuda a seguir
+    creando nuevas bestias, monstruos y criaturas.
+
+    Si disfrutas de ${w[0]}, ¡no dudes en descubrir mis
+    otras creaciones de la colección Dragón Primordial!
+
+    Por favor, no redistribuyas ni revendas este producto
+    sin mi permiso.
+
+    ¡Disfruta de ${w[1]}!
+
+    - Dragón Primordial
+    ============================================================
+]]`;
+}
+
+// Lista de productos: [grupo, nombre, tipo]
+function graciasProductos(){
+  const L=[];
+  BEAST_TOOLS.forEach(b=>L.push(['🦁 Beast Tools',b.name.replace('Tool ','Tool — '),'tool']));
+  [['💠👑 Pure Beasts',PURE],['💠🩸 Corrupted Beasts',CORRUPT],['♦️👑 Bosses',BOSSES],['♦️👹 Hostile NPCs',NPCS]].forEach(([g,arr])=>{
+    arr.forEach(a=>L.push([g,{es:a[5],en:a[2].replace(' Roblox NPC','')},'npc']));
+  });
+  L.push(['🛠️ Scripts','Monster Parts Connector Motor6D','script']);
+  L.push(['🛠️ Scripts','Arcane Sentinel v2','script']);
+  return L;
+}
+function updateGracias(){
+  const sel=document.getElementById('gsel');if(!sel)return;
+  const p=graciasProductos()[+sel.value];
+  const name=typeof p[1]==='string'?p[1]:p[1][LANG];
+  document.getElementById('gout').textContent=graciasScript(name,p[2],LANG);
+}
+function buildGracias(){
+  const prods=graciasProductos();
+  let opts='',last='';
+  prods.forEach((p,i)=>{
+    if(p[0]!==last){ if(last)opts+='</optgroup>'; opts+=`<optgroup label="${p[0]}">`; last=p[0]; }
+    const nm=typeof p[1]==='string'?p[1]:p[1][LANG];
+    opts+=`<option value="${i}">${nm}</option>`;
+  });
+  opts+='</optgroup>';
+  return `<div class="fld"><div class="flb"><span>${LBL('Elige el producto','Choose the product')}</span></div>
+    <select class="gsel" id="gsel" onchange="updateGracias()">${opts}</select></div>
+    <div class="fld"><div class="flb"><span>${LBL('Script de agradecimiento (pégalo en un Script)','Thank-you script (paste it into a Script)')}</span><button class="cpb" onclick="cp('gout')">${LBL('Copiar','Copy')}<span class="ok" id="c-gout">✓</span></button></div><pre id="gout"></pre></div>`
+    +INF(LANG==='en'
+      ?'<b>How to use:</b> in Roblox Studio insert a <b>Script</b> into the model, paste this text, turn off <b>Enabled</b> (older Studio: <b>Disabled</b> on) and name it <b>Gracias_DragonPrimordial</b>. It only holds a comment, so it does nothing when the game runs. Wording adapts to the product type (NPC / tool / script).'
+      :'<b>Cómo usarlo:</b> en Roblox Studio inserta un <b>Script</b> dentro del modelo, pega este texto, desactiva <b>Enabled</b> (en Studio antiguo: marca <b>Disabled</b>) y llámalo <b>Gracias_DragonPrimordial</b>. Solo contiene un comentario, así que no hace nada al ejecutar el juego. El texto se adapta al tipo de producto (NPC / herramienta / script).');
+}
+
 function buildAll(){
   pbar.innerHTML='';
   pp.innerHTML='';
@@ -799,6 +977,8 @@ function buildAll(){
   {id:'itch',lbl:'🎮 itch.io',cls:'itch'},
   {id:'yt',lbl:'▶️ YouTube',cls:'yt'},
   {id:'tt',lbl:'🎵 TikTok',cls:'tt'},
+  {id:'perfil',lbl:'👤 '+LBL('Mi perfil','My profile'),cls:'perfil'},
+  {id:'gracias',lbl:'📜 '+LBL('Script de gracias','Thank-you script'),cls:'gracias'},
 ].forEach((pl,i)=>{
   const btn=document.createElement('button');
   btn.className='pb'+(i===0?' '+pl.cls:'');
@@ -809,6 +989,17 @@ function buildAll(){
   const panel=document.createElement('div');
   panel.id='plat-'+pl.id;
   panel.className='plat-panel'+(i===0?' active':'');
+
+  if(pl.id==='perfil'){
+    panel.innerHTML=SL('sl-ch','👤 '+LBL('Descripción del perfil','Profile description'))
+      +F(LBL('Descripción del perfil','Profile description'),LANG==='en'?PERFIL_EN:PERFIL_ES)
+      +INF(LBL('<b>Dónde pegarla:</b> perfil de BuiltByBit, "Acerca de" de itch.io y descripción del canal de YouTube. Es larga: para X/TikTok usa una versión corta (la bio de TikTok está en su pestaña).','<b>Where to paste it:</b> BuiltByBit profile, itch.io "About" and the YouTube channel description. It is long: for X/TikTok use a short version (the TikTok bio is on its tab).'));
+    pp.appendChild(panel);return;
+  }
+  if(pl.id==='gracias'){
+    panel.innerHTML=SL('sl-script','📜 '+LBL('Script de agradecimiento','Thank-you script'))+buildGracias();
+    pp.appendChild(panel);return;
+  }
 
   const beast=buildBeastPanels(pl.id);
   const pure=buildNPCPanels(PURE,pl.id);
@@ -951,6 +1142,7 @@ function activatePlat(id,btn,cls){
   document.querySelectorAll('.pb').forEach(b=>b.className='pb');
   document.getElementById('plat-'+id).classList.add('active');
   btn.classList.add(cls);
+  if(id==='gracias')updateGracias();
   // auto-select the first item in EVERY group (ibar), not just the first one overall
   document.querySelectorAll('#plat-'+id+' .ibar').forEach(ib=>{
     const first=ib.querySelector('.ib');
