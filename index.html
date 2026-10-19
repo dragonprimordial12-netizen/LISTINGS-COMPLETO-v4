@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dragon Primordial — Listings v4</title>
+<title>Dragon Primordial — Listings v5</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',sans-serif;background:#111;color:#ddd;font-size:13px;padding:10px}
@@ -25,7 +25,7 @@ h1{font-size:14px;color:#fa0;margin-bottom:2px}
 .sl-pure{background:#061a2e;color:#7cf}.sl-corrupt{background:#1e0606;color:#f77}
 .sl-boss{background:#1e0e00;color:#fa0}.sl-npc{background:#061e06;color:#7f7}
 .sl-beast{background:#1e1000;color:#fc9}.sl-script{background:#10061e;color:#c9f}
-.sl-sentinel{background:#061a2e;color:#9cf}.sl-ch{background:#1a0808;color:#f99}
+.sl-music{background:#0a1f1a;color:#6fd}.sl-sentinel{background:#061a2e;color:#9cf}.sl-ch{background:#1a0808;color:#f99}
 .ibar{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:7px}
 .ib{padding:2px 7px;border-radius:4px;border:1px solid #1e1e1e;font-size:10px;cursor:pointer;background:#141414;color:#666;white-space:nowrap}
 .ib.active{background:#222;color:#ccc;border-color:#3a3a3a}
@@ -43,8 +43,8 @@ h1{font-size:14px;color:#fa0;margin-bottom:2px}
 </style>
 </head>
 <body>
-<h1>🐲 DRAGON PRIMORDIAL — LISTINGS COMPLETO v4</h1>
-<div class="sub">BuiltByBit · itch.io · YouTube · TikTok — Todos los productos — Beast Tools con descripciones reales en inglés para BBB</div>
+<h1>🐲 DRAGON PRIMORDIAL — LISTINGS COMPLETO v5</h1>
+<div class="sub">BuiltByBit · itch.io · YouTube · TikTok — Todos los productos — Beast Tools con descripciones reales en inglés para BBB — + Sonidos Bestias: Génesis (4 músicas/efectos)</div>
 <div class="lang-bar" id="langbar">
   <button class="lb active" id="lb-es" onclick="setLang('es')">🇪🇸 Español</button>
   <button class="lb" id="lb-en" onclick="setLang('en')">🇬🇧 English</button>
@@ -64,6 +64,8 @@ const D={
   kofi:'https://ko-fi.com/dragonprimordial',
   atom:'https://www.atom.bio/dragonprimordial12',
   web:'https://dragonprimordial12-netizen.github.io/Dragon_Primordial/',
+  gen:'https://dragonprimordial12-netizen.github.io/Lobby_Music_Generator/',
+  pack:'https://dragonprimordial.itch.io/bestias-gnesis-pack-de-sonidos-de-combate',
 };
 const LINKS=`🛒 BuiltByBit: ${D.bbb}\n🎮 itch.io: ${D.itch}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}`;
 const LINKS_YT=(slug)=>`🛒 Comprar (BuiltByBit): ${D.bbb}\n🎮 itch.io: ${D.itch}${slug}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}\n\nEscríbeme si tienes alguna pregunta.`;
@@ -785,13 +787,245 @@ function buildBeastPanels(plat){
   return {tabs,panels};
 }
 
+// ─── SONIDOS · BESTIAS: GÉNESIS (v5) ─────────────────────────
+const LINKS_SND_ES=`🎧 Escúchalos gratis: ${D.gen}\n🛒 BuiltByBit: ${D.bbb}\n🎮 itch.io (pack): ${D.pack}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}`;
+const LINKS_SND_EN=`🎧 Listen for free: ${D.gen}\n🛒 BuiltByBit: ${D.bbb}\n🎮 itch.io (pack): ${D.pack}\n💬 Discord: ${D.disc}\n🐦 X/Twitter: ${D.tw}\n🎵 TikTok: ${D.tt}\n☕ Ko-fi: ${D.kofi}`;
+const HASH_SND='#gamedev #gameaudio #gamemusic #sfx #copyrightfree #indiedev #godot #bestiasgenesis';
+const HASH_SND_YT='#gamedev #gameaudio #gamemusic #copyrightfree #indiedev #godot';
+
+// wav:true → el ZIP lleva WAV + MP3 · wav:false → solo MP3 · pending:true → falta exportar el archivo
+const SONIDOS=[
+ {id:'despertar',em:'🎵',wav:false,pending:false,
+  bbb:'Despertar de la Batalla - Music Loop',
+  sum:'Looping combat music track for games. Copyright-free, MP3.',
+  tags:'music, loop, combat, battle, game audio, soundtrack, royalty free, rpg, boss',
+  tip:{es:'Pon la música sobre un combate de Bestias: Génesis; que haya acción desde el segundo 1.',
+       en:'Play it over a Bestias: Génesis fight; have action from second 1.'},
+  es:{name:'Despertar de la Batalla',type:'Música Épica de Combate (Loop)',ytType:'Música de Combate (Loop)',
+      intro:'Un ambiente épico para entrar en acción. Loop sin copyright, pensado para que cada batalla se sienta como el comienzo de algo grande.',
+      detail:'Pista de música de combate en loop continuo (aprox. 1 minuto), lista para batallas, jefes y enfrentamientos.',
+      incl:['1 pista de música de combate en loop (aprox. 1:00)'],
+      feat:['Ambiente épico de combate','Loop sin copyright'],
+      for:['RPG y aventuras','Bosses y enemigos','Combates épicos','Mundo abierto'],
+      hook:'⚔️ Despertar de la Batalla — música épica de combate para tu juego\n\nLoop sin copyright, listo para batallas y jefes.'},
+  en:{name:'Despertar de la Batalla',type:'Epic Combat Music (Loop)',ytType:'Combat Music Loop',
+      intro:'An epic soundscape to kick off the action. Copyright-free loop, made so every fight feels like the start of something big.',
+      detail:'Seamless combat music loop (about 1 minute), ready for battles, boss fights and showdowns.',
+      incl:['1 combat music track, looped (about 1:00)'],
+      feat:['Epic combat atmosphere','Copyright-free loop'],
+      for:['RPGs and adventures','Bosses and enemies','Epic combat','Open worlds'],
+      hook:'⚔️ Despertar de la Batalla — epic combat music for your game\n\nCopyright-free loop, ready for battles and boss fights.'}},
+
+ {id:'antes',em:'🌅',wav:false,pending:true,
+  bbb:'Antes de la Batalla - Lobby Music Loop',
+  sum:'Looping lobby and menu music track for games. Copyright-free, MP3.',
+  tags:'music, loop, lobby, menu music, ambient, game audio, soundtrack, royalty free, adventure, rpg',
+  tip:{es:'Muéstrala sobre el lobby o la pantalla de selección del juego, con un recorrido lento de cámara.',
+       en:'Show it over the game lobby or selection screen, with a slow camera pan.'},
+  es:{name:'Antes de la Batalla',type:'Ambiente Épico de Lobby (Loop)',ytType:'Música de Lobby (Loop)',
+      intro:'Ambiente épico de espera para el lobby. Una melodía que prepara al jugador para comenzar su aventura. Loop sin copyright.',
+      detail:'Pista de ambiente en loop continuo, pensada para el momento previo a la acción: pantallas de lobby, menús y selección de personaje.',
+      incl:['1 pista de ambiente de lobby en loop'],
+      feat:['Ambiente épico de aventura','Loop sin copyright'],
+      for:['Lobby y menús','Pantallas de selección','Ambiente de aventura','Juegos de combate y RPG'],
+      hook:'🌅 Antes de la Batalla — música de lobby para tu juego\n\nLa calma épica justo antes de la acción. Loop sin copyright.'},
+  en:{name:'Antes de la Batalla',type:'Epic Lobby Ambience (Loop)',ytType:'Lobby Music Loop',
+      intro:'An epic waiting atmosphere for your lobby: a melody that gets players ready to begin their adventure. Copyright-free loop.',
+      detail:'Seamless ambience loop built for the moment before the action: lobby screens, menus and character select.',
+      incl:['1 lobby ambience track, looped'],
+      feat:['Epic adventure atmosphere','Copyright-free loop'],
+      for:['Lobbies and menus','Selection screens','Adventure atmosphere','Combat games and RPGs'],
+      hook:'🌅 Antes de la Batalla — lobby music for your game\n\nThe epic calm right before the action. Copyright-free loop.'}},
+
+ {id:'furia',em:'🥁',wav:true,pending:false,
+  bbb:'Furia de Pattala - Combat Music Loop',
+  sum:'Looping 2:00 combat music with war drums and heavy bass. WAV and MP3.',
+  tags:'music, loop, war drums, combat, boss fight, game audio, royalty free, soundtrack, heavy bass, rpg',
+  tip:{es:'El golpe «Pattala» entra hacia 0:21, 0:42 y 1:03: sincroniza ahí un corte de vídeo o un ataque.',
+       en:`The "Pattala" hit lands around 0:21, 0:42 and 1:03: sync a video cut or an attack there.`},
+  es:{name:'Furia de Pattala',type:'Música Épica de Combate (Loop)',ytType:'Música de Combate (Loop)',
+      intro:'Tambores de guerra, bajo pesado y metales para combates que hacen temblar el campo de batalla. Loop sin copyright de 2:00.',
+      detail:'Incluye el golpe «Pattala» marcando los cambios de sección, con intro, subida, tema principal, quiebre y final.',
+      incl:['1 pista de música de combate de 2:00 en loop'],
+      feat:['Tambores de guerra y bajo pesado','Loop sin copyright'],
+      for:['Combates y enfrentamientos','Bosses y arenas','RPG y juegos de acción','Videojuegos 3D y animaciones'],
+      hook:'🥁 Furia de Pattala — tambores de guerra y bajo pesado\n\nMúsica de combate de 2:00 en loop. Sin copyright.'},
+  en:{name:'Furia de Pattala',type:'Epic Combat Music (Loop)',ytType:'Combat Music Loop',
+      intro:'War drums, heavy bass and brass for fights that shake the battlefield. A 2:00 copyright-free loop.',
+      detail:`Features the "Pattala" hit marking the section changes, with an intro, build-up, main theme, breakdown and finale.`,
+      incl:['1 combat music track, 2:00, looped'],
+      feat:['War drums and heavy bass','Copyright-free loop'],
+      for:['Combat and showdowns','Bosses and arenas','RPGs and action games','3D games and animations'],
+      hook:'🥁 Furia de Pattala — war drums and heavy bass\n\n2:00 combat music loop. Copyright-free.'}},
+
+ {id:'pattala',em:'💥',wav:true,pending:false,
+  bbb:'Pattala Sound Effect - Impact SFX',
+  sum:'Short impact sound effect (under 1 second) for combat and NPCs. WAV and MP3.',
+  tags:'sound effect, sfx, impact, hit, punch, paw strike, combat, game audio, royalty free, npc',
+  tip:{es:'Sincroniza el golpe con un impacto visual; dura menos de 1 s, deja un instante de silencio antes para que se note.',
+       en:'Sync the hit with a visual impact; it lasts under 1 s, leave a beat of silence before it so it lands.'},
+  es:{name:'Pattala Sound Effect',type:'Sonido de Pattada Brutal',ytType:'Sonido de Pattada Brutal',
+      intro:'Un golpe seco y contundente, 100% original. ¡PAM! Impacto potente para que cada ataque se sienta.',
+      detail:'Efecto de sonido de menos de un segundo, ideal para combates, animaciones y NPCs.',
+      incl:['1 efecto de sonido de impacto (menos de 1 segundo)'],
+      feat:['Impacto potente: golpe seco y contundente','Sin copyright','Listo para usar'],
+      for:['Combates y animaciones','NPCs y enemigos','Ataques y habilidades','Videojuegos 3D'],
+      hook:'💥 ¿Se siente este golpe? 🐾\n\nPattala Sound Effect — sonido de pattada brutal para tus ataques.'},
+  en:{name:'Pattala Sound Effect',type:'Brutal Paw Strike',ytType:'Brutal Paw Strike',
+      intro:'A dry, heavy-hitting impact, 100% original. PAM! Powerful hit that makes every attack land.',
+      detail:'A sound effect under one second, ideal for combat, animations and NPCs.',
+      incl:['1 impact sound effect (under 1 second)'],
+      feat:['Powerful impact: dry, heavy hit','Copyright-free','Ready to use'],
+      for:['Combat and animations','NPCs and enemies','Attacks and abilities','3D games'],
+      hook:'💥 Can you feel that hit? 🐾\n\nPattala Sound Effect — a brutal paw-strike sound for your attacks.'}}
+];
+
+// ─── DESCRIPCIÓN ESTÁNDAR (mismo formato 「 ✦ … ✦ 」) ──────────
+function sndDesc(s,lang,zip){
+  const es=lang==='es', t=es?s.es:s.en;
+  const L=a=>a.map(x=>'• '+x).join('\n');
+  const fmtES=s.wav?'.WAV y .MP3':'.MP3', fmtEN=s.wav?'.WAV and .MP3':'.MP3';
+  const eng=s.wav?(es?'WAV o MP3':'WAV or MP3'):'MP3';
+  const q=es?(s.wav?'WAV 16-bit / 44.1 kHz estéreo y MP3 de alta calidad.':'MP3 de alta calidad.')
+            :(s.wav?'16-bit / 44.1 kHz stereo WAV and high-quality MP3.':'High-quality MP3.');
+  if(es) return `${s.em} ${t.name} — ${t.type}
+
+${t.intro}
+
+${t.detail}
+
+Este sonido forma parte de la colección BESTIAS: GÉNESIS — sonidos 100% originales creados por Dragón Primordial para videojuegos.
+
+「 ✦ QUÉ INCLUYE ✦ 」
+${L(t.incl.concat(['Formato'+(s.wav?'s':'')+' '+fmtES+(zip?' (en un .ZIP)':'')]))}
+
+「 ✦ CARACTERÍSTICAS ✦ 」
+${L(t.feat.concat(['100% original','Alta calidad']))}
+
+「 ✦ FORMATOS Y CALIDAD ✦ 」
+Archivos listos para usar (drag & drop) en cualquier motor que soporte ${eng}, como Godot, Unity o Unreal. ${q}
+
+「 ✦ PERFECTO PARA ✦ 」
+${L(t.for)}
+
+「 ✦ MÁS DE ESTA COLECCIÓN ✦ 」
+${LINKS_SND_ES}`;
+  return `${s.em} ${t.name} — ${t.type}
+
+${t.intro}
+
+${t.detail}
+
+This sound is part of the BESTIAS: GÉNESIS collection — 100% original sounds made by Dragón Primordial for video games.
+
+「 ✦ WHAT'S INCLUDED ✦ 」
+${L(t.incl.concat([(s.wav?'Formats ':'Format ')+fmtEN+(zip?' (in a .ZIP)':'')]))}
+
+「 ✦ FEATURES ✦ 」
+${L(t.feat.concat(['100% original','High quality']))}
+
+「 ✦ FORMATS & QUALITY ✦ 」
+Ready-to-use files (drag & drop) for any engine that supports ${eng}, such as Godot, Unity or Unreal. ${q}
+
+「 ✦ PERFECT FOR ✦ 」
+${L(t.for)}
+
+「 ✦ MORE FROM THIS COLLECTION ✦ 」
+${LINKS_SND_EN}`;
+}
+
+// ─── PACK ITCH.IO (4 en 1) ────────────────────────────────────
+function itchPackDesc(lang){
+  const es=lang==='es';
+  const items=SONIDOS.map(s=>{const t=es?s.es:s.en;return `${s.em} ${t.name}\n${t.intro}`;}).join('\n\n');
+  if(es) return `🐉 Bestias: Génesis — Pack de Sonidos de Combate
+
+4 sonidos 100% originales para tu juego: loops épicos de combate y lobby, y un efecto de impacto brutal. Todo sin copyright, listo para usar.
+
+${items}
+
+「 ✦ FORMATOS ✦ 」
+• MP3: los 4 sonidos
+• WAV: Furia de Pattala y Pattala Sound Effect
+Listos para arrastrar y soltar en Godot, Unity, Unreal y otros motores.
+
+「 ✦ ESCÚCHALOS ANTES DE DESCARGAR ✦ 」
+Puedes escuchar los sonidos gratis en el generador: ${D.gen}
+
+「 ✦ MÁS DE DRAGÓN PRIMORDIAL ✦ 」
+${LINKS_SND_ES.split('\n').filter(l=>!l.startsWith('🎧')&&!l.includes('itch.io (pack)')).join('\n')}`;
+  return `🐉 Bestias: Génesis — Combat Sound Pack
+
+4 100% original sounds for your game: epic combat and lobby loops, plus a brutal impact effect. All copyright-free, ready to use.
+
+${items}
+
+「 ✦ FORMATS ✦ 」
+• MP3: all 4 sounds
+• WAV: Furia de Pattala and Pattala Sound Effect
+Ready to drag and drop into Godot, Unity, Unreal and other engines.
+
+「 ✦ LISTEN BEFORE YOU DOWNLOAD ✦ 」
+You can listen to the sounds for free in the generator: ${D.gen}
+
+「 ✦ MORE FROM DRAGÓN PRIMORDIAL ✦ 」
+${LINKS_SND_EN.split('\n').filter(l=>!l.startsWith('🎧')&&!l.includes('itch.io (pack)')).join('\n')}`;
+}
+function buildSoundItch(){
+  let h='';
+  h+=F(LBL('Título','Title'),LBL('Bestias: Génesis — Pack de Sonidos de Combate','Bestias: Génesis — Combat Sound Pack'));
+  h+=F('URL','bestias-gnesis-pack-de-sonidos-de-combate');
+  h+=F(LBL('Descripción corta / tagline','Short description / tagline'),LBL('4 sonidos originales de combate: loops épicos y un golpe brutal, listos para tu juego.','4 original combat sounds: epic loops and a brutal hit, ready for your game.'));
+  h+=F(LBL('Descripción completa (pégala en el editor VISUAL, no en el botón <>)','Full description (paste it in the VISUAL editor, not the <> button)'),itchPackDesc(LANG));
+  h+=F('Tags','dragon-primordial, bestias-genesis, sound-effects, music-loop, game-audio, combat, royalty-free, godot, roblox');
+  h+=INF(LBL(
+    '<b>Clasificación:</b> Game assets · <b>Tipo:</b> Downloadable · <b>Precio actual:</b> $0 or donate (sugerido $2.00) · <b>Custom noun:</b> pack · <b>AI Disclosure:</b> Yes · <b>Capturas:</b> las 4 portadas · <b>Archivos:</b> MP3 de los 4 + WAV de Furia y Pattala<br>⚠️ <b>Pendiente:</b> falta subir el MP3 de Antes de la Batalla (exportar con «Guardar Loop» en el generador). Si cambias la URL del proyecto a <i>bestias-genesis-…</i>, actualiza <b>D.pack</b> al inicio del archivo.',
+    '<b>Classification:</b> Game assets · <b>Kind:</b> Downloadable · <b>Current price:</b> $0 or donate (suggested $2.00) · <b>Custom noun:</b> pack · <b>AI Disclosure:</b> Yes · <b>Screenshots:</b> the 4 covers · <b>Files:</b> MP3 of all 4 + WAV of Furia and Pattala<br>⚠️ <b>Pending:</b> the Antes de la Batalla MP3 still needs uploading (export with “Guardar Loop” in the generator). If you change the project URL to <i>bestias-genesis-…</i>, update <b>D.pack</b> at the top of the file.'));
+  return h;
+}
+
+// ─── PANELES POR PLATAFORMA (BBB · YouTube · TikTok) ──────────
+function buildSoundPanels(plat){
+  const tabs=SONIDOS.map(s=>`<button class="ib" data-npctab="${plat}-snd-${s.id}" onclick="showNPC(this,'${plat}-snd-${s.id}')">${s.em} ${s.es.name}</button>`).join('');
+  let panels='';
+  SONIDOS.forEach(s=>{
+    const t=LANG==='en'?s.en:s.es, id=`${plat}-snd-${s.id}`;
+    if(plat==='bbb'){
+      const warn=s.pending?LBL('<br>⚠️ <b>Pendiente:</b> exporta el MP3 desde el generador («Guardar Loop») antes de subir el ZIP.','<br>⚠️ <b>Pending:</b> export the MP3 from the generator (“Guardar Loop”) before uploading the ZIP.'):'';
+      panels+=`<div id="${id}" class="npc-panel">
+        ${F(LBL('Título (inglés · menos de 40 caracteres, sin emojis) — ','Title (English · under 40 characters, no emojis) — ')+s.bbb.length+' '+LBL('caracteres','chars'),s.bbb)}
+        ${F('Summary',s.sum)}
+        ${F(LBL('Descripción completa','Full description'),sndDesc(s,LANG,true))}
+        ${F('Tags',s.tags)}
+        ${INF(LBL(
+          `<b>Precio:</b> $20.00 · <b>Pago:</b> Require payment for download license · <b>Categoría:</b> Other · <b>Idiomas:</b> ✅ This product doesn't contain text · <b>Archivo:</b> .ZIP (${s.wav?'WAV + MP3':'solo MP3'}) — BBB no acepta .mp3/.wav sueltos · <b>Portada:</b> 2:1, mín. 1024×512 · <b>IA (sugerido):</b> marketing = Yes · producto = Significant AI-generated content${warn}`,
+          `<b>Price:</b> $20.00 · <b>Payment:</b> Require payment for download license · <b>Category:</b> Other · <b>Languages:</b> ✅ This product doesn't contain text · <b>File:</b> .ZIP (${s.wav?'WAV + MP3':'MP3 only'}) — BBB doesn't accept loose .mp3/.wav · <b>Cover:</b> 2:1, min 1024×512 · <b>AI (suggested):</b> marketing = Yes · product = Significant AI-generated content${warn}`))}
+      </div>`;
+    } else if(plat==='yt'){
+      const title=(LANG==='en'?'[FOR SALE] ':'[EN VENTA] ')+t.name+' — '+t.ytType+' | Game Audio';
+      const body=HASH_SND_YT+'\n\n'+s.em+' '+t.name+' — '+t.type+'.\n'+t.intro+'\n\n'+(LANG==='en'?LINKS_SND_EN+'\n\nContact me if you have any questions.':LINKS_SND_ES+'\n\nEscríbeme si tienes alguna pregunta.');
+      panels+=`<div id="${id}" class="npc-panel">
+        ${F(LBL('Título del vídeo','Video title'),title)}
+        ${F(LBL('Descripción YT','YT description'),body)}
+      </div>`;
+    } else if(plat==='tt'){
+      const cap=t.hook+'\n\n🎧 '+LBL('Escúchalo gratis → link en bio','Listen for free → link in bio')+'\n🛒 '+LBL('En venta en BuiltByBit','For sale on BuiltByBit')+'\n'+HASH_SND;
+      panels+=`<div id="${id}" class="npc-panel">
+        ${F('Caption TikTok',cap)}
+        ${INF('<b>'+LBL('Consejo','Tip')+':</b> '+(LANG==='en'?s.tip.en:s.tip.es)+'<br><b>Hashtags:</b> '+LBL('adaptados a audio (no los fijos de Roblox)','adapted to audio (not the fixed Roblox ones)'))}
+      </div>`;
+    }
+  });
+  return {tabs,panels};
+}
+
 // ─── BUILD ALL PLATFORMS ──────────────────────────────────────
 const pbar=document.getElementById('pbar');
 const pp=document.getElementById('pp');
 let LANG='es';
 
-const CH_DESC_ES='🔥 Beasts & Monsters — Desarrollador de juegos Roblox\n\n🐲 Creo bestias, monstruos, NPCs jefe y herramientas de combate para Roblox — con mucho VFX, plug-and-play, listas para cualquier juego.\n⚔️ Cada herramienta incluye ServerScript + LocalScript, HUD personalizado, efectos de cámara y sistemas de combate balanceados.\n🎮 Nuevas herramientas beast, devlogs y showcases cada semana.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Compra mis assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 Todos mis links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
-const CH_DESC_EN='🔥 Beasts & Monsters — Roblox Game Developer\n\n🐲 I build scripted beasts, monsters, boss NPCs and combat tools for Roblox — VFX-heavy, plug-and-play, ready to drop into any game.\n⚔️ Every tool ships with ServerScript + LocalScript, a custom HUD, camera effects and balanced combat systems.\n🎮 New beast tools, devlogs and showcases every week.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Buy my assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 All my links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
+const CH_DESC_ES='🔥 Beasts & Monsters — Desarrollador de juegos Roblox\n\n🐲 Creo bestias, monstruos, NPCs jefe y herramientas de combate para Roblox — con mucho VFX, plug-and-play, listas para cualquier juego.\n⚔️ Cada herramienta incluye ServerScript + LocalScript, HUD personalizado, efectos de cámara y sistemas de combate balanceados.\n🎮 Nuevas herramientas beast, devlogs y showcases cada semana.\n🎵 Música y efectos de sonido originales para videojuegos — escúchalos gratis en mi generador.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Compra mis assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🎧 Mis sonidos (gratis): '+D.gen+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 Todos mis links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
+const CH_DESC_EN='🔥 Beasts & Monsters — Roblox Game Developer\n\n🐲 I build scripted beasts, monsters, boss NPCs and combat tools for Roblox — VFX-heavy, plug-and-play, ready to drop into any game.\n⚔️ Every tool ships with ServerScript + LocalScript, a custom HUD, camera effects and balanced combat systems.\n🎮 New beast tools, devlogs and showcases every week.\n🎵 Original music and sound effects for games — listen for free in my generator.\n\n「 ✦ LINKS ✦ 」\n\n🛒 Buy my assets (BuiltByBit): '+D.bbb+'\n🎮 itch.io: '+D.itch+'\n🎧 My sounds (free): '+D.gen+'\n🐦 X / Twitter: '+D.tw+'\n🎵 TikTok: '+D.tt+'\n💬 Discord: '+D.disc+'\n☕ Ko-fi: '+D.kofi+'\n🌐 All my links: '+D.atom+'\n\n🦁 Beasts & Monsters — Wild Era';
 
 
 // ─── PERFIL + SCRIPT DE AGRADECIMIENTO ───────────────────────
@@ -811,6 +1045,7 @@ Mi propio juego 3D de acción y supervivencia, desarrollado con GDScript. Constr
 * 💥 Habilidades especiales, efectos de cámara e interfaces personalizadas.
 * 🛠️ Recursos diseñados para integrarse fácilmente en proyectos de Roblox.
 * 💻 Desarrollo de videojuegos 3D mediante código con Godot y GDScript.
+* 🎵 Música y efectos de sonido originales para videojuegos (colección Bestias: Génesis).
 
 🚀 Mi objetivo
 Crear criaturas memorables, desarrollar mundos salvajes y compartir mis creaciones con otros desarrolladores. Cada proyecto es una oportunidad para aprender, experimentar y llevar mis ideas más lejos.
@@ -819,6 +1054,8 @@ Crear criaturas memorables, desarrollar mundos salvajes y compartir mis creacion
 ${D.bbb}
 🎮 itch.io — Mis proyectos
 ${D.itch}
+🎧 Catálogo de sonidos — Escucha gratis
+${D.gen}
 🐦 X / Twitter
 ${D.tw}
 🎵 TikTok
@@ -851,6 +1088,7 @@ My own 3D action and survival game, built with GDScript. I build 3D models, mate
 * 💥 Special abilities, camera effects and custom interfaces.
 * 🛠️ Assets designed to integrate easily into Roblox projects.
 * 💻 3D game development through code with Godot and GDScript.
+* 🎵 Original music and sound effects for video games (Bestias: Génesis collection).
 
 🚀 My goal
 To create memorable creatures, build wild worlds and share my creations with other developers. Every project is a chance to learn, experiment and take my ideas further.
@@ -859,6 +1097,8 @@ To create memorable creatures, build wild worlds and share my creations with oth
 ${D.bbb}
 🎮 itch.io — My projects
 ${D.itch}
+🎧 Sound catalog — Listen for free
+${D.gen}
 🐦 X / Twitter
 ${D.tw}
 🎵 TikTok
@@ -880,7 +1120,59 @@ const GRACIAS_WORDS={
   es:{npc:['este NPC','tu nueva criatura'],tool:['esta herramienta','tu nueva herramienta'],script:['este script','tu nuevo script']},
   en:{npc:['this NPC','your new creature'],tool:['this tool','your new tool'],script:['this script','your new script']}
 };
+GRACIAS_WORDS.es.audio=['este sonido','tu nuevo sonido'];
+GRACIAS_WORDS.en.audio=['this sound','your new sound'];
+// Para sonidos: texto plano (no es un Script de Roblox) → guardar como Gracias_DragonPrimordial.txt dentro del ZIP
+function graciasAudio(name,lang){
+  if(lang==='en') return `============================================================
+                   DRAGÓN PRIMORDIAL
+            THANK YOU FOR YOUR PURCHASE!
+============================================================
+
+Creator: Dragón Primordial
+Product: ${name}
+Version: Check the resource page for the latest version.
+
+Thank you for buying my product!
+Your support means a lot to me and helps me keep
+creating new music, sound effects and creatures.
+
+If you enjoy this sound, feel free to check out my
+other creations from the Dragón Primordial collection!
+
+Please do not redistribute or resell this product
+without my permission.
+
+Enjoy your new sound!
+
+- Dragón Primordial
+============================================================`;
+  return `============================================================
+                   DRAGÓN PRIMORDIAL
+               ¡GRACIAS POR TU COMPRA!
+============================================================
+
+Creador: Dragón Primordial
+Producto: ${name}
+Versión: Consulta la página del recurso para ver la última versión.
+
+¡Gracias por comprar mi producto!
+Tu apoyo significa mucho para mí y me ayuda a seguir
+creando nueva música, efectos de sonido y criaturas.
+
+Si disfrutas de este sonido, ¡no dudes en descubrir mis
+otras creaciones de la colección Dragón Primordial!
+
+Por favor, no redistribuyas ni revendas este producto
+sin mi permiso.
+
+¡Disfruta de tu nuevo sonido!
+
+- Dragón Primordial
+============================================================`;
+}
 function graciasScript(name,kind,lang){
+  if(kind==='audio') return graciasAudio(name,lang);
   const w=GRACIAS_WORDS[lang][kind];
   if(lang==='en') return `--[[
     ============================================================
@@ -941,6 +1233,7 @@ function graciasProductos(){
   [['💠👑 Pure Beasts',PURE],['💠🩸 Corrupted Beasts',CORRUPT],['♦️👑 Bosses',BOSSES],['♦️👹 Hostile NPCs',NPCS]].forEach(([g,arr])=>{
     arr.forEach(a=>L.push([g,{es:a[5],en:a[2].replace(' Roblox NPC','')},'npc']));
   });
+  SONIDOS.forEach(s=>L.push(['🎵 Bestias: Génesis — Sonidos',{es:s.es.name,en:s.en.name},'audio']));
   L.push(['🛠️ Scripts','Monster Parts Connector Motor6D','script']);
   L.push(['🛠️ Scripts','Arcane Sentinel v2','script']);
   return L;
@@ -965,7 +1258,8 @@ function buildGracias(){
     <div class="fld"><div class="flb"><span>${LBL('Script de agradecimiento (pégalo en un Script)','Thank-you script (paste it into a Script)')}</span><button class="cpb" onclick="cp('gout')">${LBL('Copiar','Copy')}<span class="ok" id="c-gout">✓</span></button></div><pre id="gout"></pre></div>`
     +INF(LANG==='en'
       ?'<b>How to use:</b> in Roblox Studio insert a <b>Script</b> into the model, paste this text, turn off <b>Enabled</b> (older Studio: <b>Disabled</b> on) and name it <b>Gracias_DragonPrimordial</b>. It only holds a comment, so it does nothing when the game runs. Wording adapts to the product type (NPC / tool / script).'
-      :'<b>Cómo usarlo:</b> en Roblox Studio inserta un <b>Script</b> dentro del modelo, pega este texto, desactiva <b>Enabled</b> (en Studio antiguo: marca <b>Disabled</b>) y llámalo <b>Gracias_DragonPrimordial</b>. Solo contiene un comentario, así que no hace nada al ejecutar el juego. El texto se adapta al tipo de producto (NPC / herramienta / script).');
+      :'<b>Cómo usarlo:</b> en Roblox Studio inserta un <b>Script</b> dentro del modelo, pega este texto, desactiva <b>Enabled</b> (en Studio antiguo: marca <b>Disabled</b>) y llámalo <b>Gracias_DragonPrimordial</b>. Solo contiene un comentario, así que no hace nada al ejecutar el juego. El texto se adapta al tipo de producto (NPC / herramienta / script).')
+    +INF(LBL('<b>Para sonidos:</b> el texto sale en formato plano (no es un Script). Guárdalo como <b>Gracias_DragonPrimordial.txt</b> y mételo dentro del ZIP junto al audio.','<b>For sounds:</b> the text comes as plain text (not a Script). Save it as <b>Gracias_DragonPrimordial.txt</b> and put it inside the ZIP next to the audio.'));
 }
 
 function buildAll(){
@@ -1007,10 +1301,13 @@ function buildAll(){
   const corrupt=buildNPCPanels(CORRUPT,pl.id);
   const boss=buildNPCPanels(BOSSES,pl.id);
   const npc=buildNPCPanels(NPCS,pl.id);
+  const snd=buildSoundPanels(pl.id);
 
   let html='';
 
   if(pl.id==='bbb'){
+    html+=SL('sl-music','🎵 Bestias: Génesis — '+LBL('Sonidos (música y efectos)','Sounds (music & SFX)'));
+    html+=`<div class="npc-group"><div class="ibar">${snd.tabs}</div>${snd.panels}</div>`;
     html+=SL('sl-beast','🦁 Beast Tools ('+LBL('Herramientas de combate','Combat tools')+')');
     html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
     html+=SL('sl-pure','💠👑 Pure Beasts');
@@ -1036,6 +1333,8 @@ function buildAll(){
   }
 
   if(pl.id==='itch'){
+    html+=SL('sl-music','🎵 Bestias: Génesis — '+LBL('Sonidos (música y efectos)','Sounds (music & SFX)'));
+    html+=buildSoundItch();
     html+=SL('sl-beast','🦁 Beast Tools');
     html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
     html+=SL('sl-pure','💠👑 Pure Beasts');
@@ -1073,6 +1372,8 @@ function buildAll(){
   if(pl.id==='yt'){
     html+=SL('sl-ch','📺 '+LBL('Descripción del canal (About)','Channel description (About)'));
     html+=F(LBL('Descripción del canal','Channel description'),LANG==='en'?CH_DESC_EN:CH_DESC_ES);
+    html+=SL('sl-music','🎵 Bestias: Génesis — '+LBL('Sonidos (música y efectos)','Sounds (music & SFX)'));
+    html+=`<div class="npc-group"><div class="ibar">${snd.tabs}</div>${snd.panels}</div>`;
     html+=SL('sl-beast','🦁 Beast Tools');
     html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
     html+=SL('sl-pure','💠👑 Pure Beasts');
@@ -1104,6 +1405,8 @@ function buildAll(){
     html+=INF(LANG==='en'
       ?'<b>Fixed hashtags:</b> #roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame<br><b>Tip:</b> 15–30s videos. Show the most impressive effect in the first 3 seconds. Use trending audio.'
       :'<b>Hashtags fijos:</b> #roblox #robloxdev #robloxstudio #gamedev #beast #combat #vfx #luau #npc #robloxgame<br><b>Consejo:</b> Vídeos de 15–30s. El efecto más impresionante en los primeros 3 segundos. Usa música de tendencia.');
+    html+=SL('sl-music','🎵 Bestias: Génesis — '+LBL('Sonidos (música y efectos)','Sounds (music & SFX)'));
+    html+=`<div class="npc-group"><div class="ibar">${snd.tabs}</div>${snd.panels}</div>`;
     html+=SL('sl-beast','🦁 Beast Tools');
     html+=`<div class="npc-group"><div class="ibar">${beast.tabs}</div>${beast.panels}</div>`;
     html+=SL('sl-pure','💠👑 Pure Beasts');
